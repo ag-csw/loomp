@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:geo="http://www.loomp.org/annotations/event/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:loomp="http://vocab.loomp.org/model/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geoonto="http://www.loomp.org/ontology/geography#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://www.loomp.org/annotations/event/">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.loomp.org/ontology/event"/>
+    <owl:imports rdf:resource="http://vocab.loomp.org/model/"/>
+  </owl:Ontology>
+  <loomp:AnnotationSet rdf:about="http://www.loomp.org/annotations/event/Events">
+    <rdfs:label xml:lang="de">Ereignisse</rdfs:label>
+    <rdfs:label xml:lang="en">Events</rdfs:label>
+    <loomp:hasAnnotations rdf:parseType="Collection">
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/event/weather">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Weather"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="de">Wetter</rdfs:label>
+        <rdfs:label xml:lang="en">Weather</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/event/accident">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Accident"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="de">Unfall</rdfs:label>
+        <rdfs:label xml:lang="en">Accident</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/event/catastrophe">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Disaster"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="de">Katastrophe</rdfs:label>
+        <rdfs:label xml:lang="en">Catastrophe</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/event/business">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/class/yago/Conventions"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="en">Business</rdfs:label>
+        <rdfs:label xml:lang="de">Business</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/event/political">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Politics"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="de">Politisch</rdfs:label>
+        <rdfs:label xml:lang="en">Political</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/event/social">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/class/yago/SocialEvents"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="en">Social</rdfs:label>
+        <rdfs:label xml:lang="de">Gesellschaftlich</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/event/sport">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Sport"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="en">Sport</rdfs:label>
+        <rdfs:label xml:lang="de">Sport</rdfs:label>
+      </loomp:Annotation>
+ 	</loomp:hasAnnotations>
+  </loomp:AnnotationSet>
+</rdf:RDF>

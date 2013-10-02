@@ -1,0 +1,24 @@
+[about] {
+	background-color: #FFFF99;
+}
+
+.resource {
+	padding: 5px 0;
+	/* border needed because there is a border on mouse over */
+	border: 1px solid #FFFFFF;
+	min-height: 35px;
+}
+
+.resource .label {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 3px;
+}
+
+.x-btn-text {
+	white-space: normal;
+}
+
+.highlighted {
+    background-color: #5F9600;
+}

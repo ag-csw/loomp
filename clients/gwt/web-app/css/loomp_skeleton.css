@@ -1,0 +1,148 @@
+/* Style sheet loomp_skeleton */
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background: url(../images/ruler-x.gif) repeat-x top left;
+}
+
+#left {
+	width: 200px;
+	float: left;
+	margin-right: 10px;
+}
+
+#wrapper {
+	margin-top: 25px;
+	margin-right: 20px;
+	width: 650px;
+	float: left;
+}
+
+#wrapper.wide {
+	width: 760px;
+}
+
+#right {
+	width: 290px;
+	float: left;
+	margin-top: 25px;
+}
+
+.x-contrast #wrapper {
+	margin-top: 5px;
+}
+.x-contrast #right {
+	width: 180px;
+}
+
+#head {
+	width: 100%;
+	background: #5F9600;
+}
+
+#headPage {
+	width: 960px;
+	overflow: auto;
+	margin: 0 auto;
+	text-align: left;
+	background: #5F9600;
+}
+
+.logo {
+	width: 220px;
+	height: 80px;
+	float: left;
+	background: url(../images/logo-white.png) no-repeat top left;
+}
+
+#head .search {
+	width: 400px;
+	height: 70px;
+	float: right;
+}
+
+#headAll {
+	width: 100%;
+	background: #fff url(../images/navH_bg.gif) repeat-x top;
+	min-height: 20px;
+}
+
+#headPrivate {
+	width: 960px;
+	margin: 0 auto;
+	background: #fff url(../images/navH_bg.gif) repeat-x top;
+}
+
+#page {
+	width: 960px;
+	margin: 25px auto;
+	text-align: left;
+	background: #fff;
+}
+
+#page .box280 {
+	width: 256px;
+	float: left;
+	margin-right: 20px;
+	padding: 10px;
+	border: 2px solid #c7c7c7;
+}
+
+#page .content660 {
+	width: 660px;
+	float: left;
+	margin: 0;
+}
+
+#footerAll {
+	width: 100%;
+	height: 90px;
+	background: url(../images/footerBG.gif) repeat-x bottom;
+}
+
+.footer {
+	width: 960px;
+	height: 90px;
+	margin: 0 auto;
+	text-align: left;
+	color: #a0a0a0;
+	background: url(../images/footerBG.gif) repeat-x bottom;
+}
+
+.footerR {
+	width: 110px;
+	height: 90px;
+	float: right;
+	color: #a0a0a0;
+	background: url(../images/footerBG.gif);
+}
+
+.footerL {
+	width: 800px;
+	height: 90px;
+	float: left;
+}
+
+.footer p, .footer .mod_customnav {
+	margin: 0;
+	padding: 50px 5px 0;
+	color: #a0a0a0;
+}
+
+.footer a {
+	margin: 0 10px;
+	color: #a0a0a0;
+}
+
+.footer a:hover {
+	color: #c7c7c7;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	float: right;
+}

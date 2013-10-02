@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:pi="http://www.loomp.org/annotations/pi/0.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:loomp="http://vocab.loomp.org/model/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://www.loomp.org/annotations/pi/0.1/">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://vocab.loomp.org/model/"/>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </owl:Ontology>
+  <loomp:AnnotationSet rdf:about="http://www.loomp.org/annotations/pi/0.1/PersonalInformation">
+    <dc:title xml:lang="de">Persönliche Informationen</dc:title>
+    <dc:title xml:lang="en">Personal Information</dc:title>
+    <rdfs:label xml:lang="de">Persönliche Informationen</rdfs:label>
+    <rdfs:label xml:lang="en">Personal Information</rdfs:label>
+    <loomp:hasAnnotations rdf:parseType="Collection">
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/pi/0.1/name">
+        <loomp:annotationDomain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <loomp:annotationProperty rdf:resource="http://xmlns.com/foaf/0.1/name"/>
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:label xml:lang="de">Name</rdfs:label>
+        <rdfs:comment xml:lang="en">Name of a person.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Name einer Person.</rdfs:comment>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/pi/0.1/title">
+        <loomp:annotationDomain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <loomp:annotationProperty rdf:resource="http://xmlns.com/foaf/0.1/title"/>
+        <rdfs:label xml:lang="de">Titel</rdfs:label>
+        <rdfs:label xml:lang="en">title</rdfs:label>
+        <rdfs:comment xml:lang="en">Salutation or position title, e.g., Mr, Mrs, Dr.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Anrede oder akademischer Titel, z.B. Herr, Frau, Dr.</rdfs:comment>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/pi/0.1/firstName">
+        <loomp:annotationDomain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <loomp:annotationProperty rdf:resource="http://xmlns.com/foaf/0.1/firstName"/>
+        <rdfs:label xml:lang="de">Vorname</rdfs:label>
+        <rdfs:label xml:lang="en">first name</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/pi/0.1/surname">
+        <loomp:annotationDomain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <loomp:annotationProperty rdf:resource="http://xmlns.com/foaf/0.1/surname"/>
+        <rdfs:label xml:lang="de">Nachname</rdfs:label>
+        <rdfs:label xml:lang="en">surname</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/pi/0.1/mbox">
+        <loomp:annotationDomain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <loomp:annotationProperty rdf:resource="http://xmlns.com/foaf/0.1/mbox"/>
+        <rdfs:label xml:lang="de">Emailadresse</rdfs:label>
+        <rdfs:label xml:lang="en">email address</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/pi/0.1/phone">
+        <loomp:annotationProperty rdf:resource="http://xmlns.com/foaf/0.1/phone"/>
+        <rdfs:label xml:lang="de">Telefon</rdfs:label>
+        <rdfs:label xml:lang="en">phone</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/pi/0.1/birthday">
+        <loomp:annotationDomain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <loomp:annotationProperty rdf:resource="http://xmlns.com/foaf/0.1/birthday"/>
+        <rdfs:label xml:lang="en">birthday</rdfs:label>
+        <rdfs:label xml:lang="de">Geburtstag</rdfs:label>
+      </loomp:Annotation>
+	</loomp:hasAnnotations>
+  </loomp:AnnotationSet>
+</rdf:RDF>

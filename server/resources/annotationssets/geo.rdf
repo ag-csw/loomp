@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:geo="http://www.loomp.org/annotations/geo/0.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:loomp="http://vocab.loomp.org/model/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geoonto="http://www.loomp.org/ontology/geography#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://www.loomp.org/annotations/geo/0.1/">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.loomp.org/ontology/geography"/>
+    <owl:imports rdf:resource="http://vocab.loomp.org/model/"/>
+  </owl:Ontology>
+  <loomp:AnnotationSet rdf:about="http://www.loomp.org/annotations/geo/0.1/geography">
+    <rdfs:label xml:lang="en">Geography</rdfs:label>
+    <rdfs:label xml:lang="de">Geographie</rdfs:label>
+    <loomp:hasAnnotations rdf:parseType="Collection">
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/country">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Country"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="de">Land</rdfs:label>
+        <rdfs:label xml:lang="en">country</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/province">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Province"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="de">Provinz, Bundesland</rdfs:label>
+        <rdfs:label xml:lang="en">province, state</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/location">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Location_%28geography%29"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="de">Ort</rdfs:label>
+        <rdfs:label xml:lang="en">location</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/city">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/City"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="en">city</rdfs:label>
+        <rdfs:label xml:lang="de">Stadt</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/village">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Village"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="de">Dorf, Gemeinde</rdfs:label>
+        <rdfs:label xml:lang="en">village, cottage</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/water">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Body_of_water"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="en">water</rdfs:label>
+        <rdfs:label xml:lang="de">Gewässer</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/ocean">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/Ocean"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="en">ocean</rdfs:label>
+        <rdfs:label xml:lang="de">Ozean</rdfs:label>
+      </loomp:Annotation>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/river">
+        <loomp:annotationDomain rdf:resource="http://dbpedia.org/resource/River"/>
+        <loomp:annotationProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+        <rdfs:label xml:lang="en">river</rdfs:label>
+        <rdfs:label xml:lang="de">Fluss</rdfs:label>
+      </loomp:Annotation>
+	</loomp:hasAnnotations>
+  </loomp:AnnotationSet>
+</rdf:RDF>

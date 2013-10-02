@@ -1,0 +1,7 @@
+<xmi:XMI xmi:version="2.0">
+<cas:NULL xmi:id="0"/>
+<cas:Sofa xmi:id="1" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="stalin in berlin in moskau und kalliningrad"/>
+<tcas:DocumentAnnotation xmi:id="8" sofa="1" begin="0" end="43" language="x-unspecified"/>
+<entity:City xmi:id="13" sofa="1" begin="10" end="16" about="http://d.opencalais.com/genericHasher-1/b61ec243-89c8-3a43-bf33-226e27c2384e" typeResource="http://s.opencalais.com/1/type/em/e/City" name="berlin" relevance="0.857"/>
+<cas:View sofa="1" members="8 13"/>
+</xmi:XMI>

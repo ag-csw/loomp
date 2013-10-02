@@ -1,0 +1,9 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX loomp: <http://www.loomp.org/loomp/0.1/>
+PREFIX ex: <http://example.com/>
+INSERT DATA {
+	ex:elem1 rdf:type loomp:Element ;
+			dc:creator ex:author1 ;
+			dc:title "Title of the first test element" .
+}

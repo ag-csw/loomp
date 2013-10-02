@@ -1,0 +1,114 @@
+/* Style sheet loomp_nav */
+#navL {
+	width: 300px;
+	float: right;
+	font-size: 93%;
+}
+
+#navL ul {
+	margin: 0;
+	padding: 10px 0;
+	list-style: none;
+}
+
+#navL li {
+	float: right;
+	margin: 0;
+	padding: 0 0 0 20px;
+	background: url("../images/navL_left.gif") no-repeat left bottom;
+}
+
+#navL p, #navL form {
+	float: right;
+	display: block;
+	margin: 0;
+	padding: 0 15px 7px 6px;
+	font-size: 0.8em;
+	background: url("../images/navL_right.gif") no-repeat right bottom;
+}
+
+#navL input {
+	width: 80px;
+	height: 16px;
+	float: left;
+	margin: 0 5px 0 0;
+	padding: 1px 3px 2px;
+}
+
+#navL button {
+	width: auto;
+	height: 23px;
+	float: left;
+	margin: 0;
+	padding: 0 3px 2px;
+	text-align: center;
+	border: 1px solid #5F9600;
+	font-weight: bold;
+	color: #5F9600;
+	background: #DDE6CB;
+}
+
+#navL button:hover {
+	color: #353535;
+}
+
+#navH {
+	width: 600;
+	float: left;
+	font-size: 93%;
+	background: yellow;
+	background: url("../images/navH_bg.gif") repeat-x top;
+}
+
+#navH ul {
+	margin: 0;
+	padding: 10 10 10 0;
+	list-style: none;
+}
+
+#navH li {
+	float: left;
+	margin: 1px 0 0;
+	padding: 0 0 0 9px;
+	background: url("../images/navH_left.gif") no-repeat left bottom;
+}
+
+#navH a, #navH p, #navH span {
+	float: left;
+	display: block;
+	padding: 0 15px 2px 6px;
+	font-weight: bold;
+	font-size: 0.8em;
+	color: #5F9600;
+	background: url("../images/navH_right.gif") no-repeat right bottom;
+}
+
+#navH a {
+	float: none;
+}
+
+#navL p, #navL form {
+	float: none;
+}
+
+#navH a:hover {
+	color: #353535;
+}
+
+#navH li.active {
+	margin-top: 0;
+	background-image: url("../images/navH_left_on.gif");
+}
+
+#navH li.active a, #navH li.active p, #navH li.active span {
+	margin: 0;
+	padding: 7px 15px 4px 6px;
+	background-image: url("../images/navH_right_on.gif");
+	text-decoration: none;
+	font-size: 1.0em;
+	color: #353535;
+}
+
+div.mod_navigation {
+	margin-top: 10px;
+}

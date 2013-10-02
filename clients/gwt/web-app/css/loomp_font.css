@@ -1,0 +1,47 @@
+/* Style sheet loomp_font */
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 100%;
+	line-height: 1.3em;
+}
+
+h1 {
+	margin: 16px 0 9px;
+	font-size: 24px;
+	line-height: 0.9em;
+}
+
+h2 {
+	margin: 16px 0 6px;
+	font-size: 20px;
+	line-height: 1.3em;
+}
+
+h3 {
+	margin: 10px 0 4px;
+	font-size: 18px;
+	line-height: 1.3em;
+}
+
+h4 {
+	margin: 6px 0 4px;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 1.3em;
+}
+
+p.small, .small {
+	margin: 0 0 1.8em;
+	font-size: 0.8em;
+	line-height: 1.5em;
+}
+
+#right {
+	font-size: 0.8em;
+	line-height: 1.5em;
+}
+
+.info {
+	font-size: 14px;
+	color: #7c7c7c;
+}

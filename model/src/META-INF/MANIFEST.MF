@@ -1,0 +1,6 @@
+Name: loomp/model/
+Specification-Title: "loomp model Classes"
+Specification-Version: "0.1.3"
+Specification-Vendor: "loomp.org"
+Implementation-Title: "loomp.model"
+Implementation-Vendor: "loomp.org"

@@ -1,0 +1,118 @@
+#navL {
+	float: right;
+	width: 300px;
+	font-size: 93%;
+	line-height: normal;
+
+}
+
+#navL ul {
+	margin: 0;
+	list-style: none;
+	padding: 10px 0px 10px 0px;
+}
+
+#navL li {
+	margin: 0;
+	float: right;
+	background: url("../images/navL_left.gif") no-repeat left bottom;
+	padding: 0 0 0 20px;
+}
+
+#navL p, #navL form {
+	float: right;
+	display: block;
+	background: url("../images/navL_right.gif") no-repeat right bottom;
+	margin: 0px;
+	font-size: 0.8em;
+	padding: 0px 15px 7px 6px;
+}
+
+#navL input {
+	width: 80px;
+	height: 16px;
+	padding: 1px 3px 2px 3px;
+	float: left;
+	margin: 0px 5px 0px 0px;
+}
+
+#navL button {
+	width: auto;
+	border: none;
+	height: 23px;
+	text-align: center;
+	float: left;
+	font-weight: bold;
+	background: #DDE6CB;
+	border: 1px solid #5F9600;
+	margin: 0px;
+	padding: 0px 3px 2px 3px;
+	color: #5F9600;
+}
+
+#navL button:hover {
+	color: #353535;
+}
+
+#navH {
+	float: left;
+	width: 600px;
+	background: yellow;
+	font-size: 93%;
+	line-height: normal;
+	background: green url("../images/navH_bg.gif") repeat-x top;
+}
+
+#navH ul {
+	margin: 0;
+	list-style: none;
+	padding: 10px 10px 10px 0;
+}
+
+#navH li {
+	margin: 0;
+	padding: 0;
+	float: left;
+	background: url("../images/navH_left.gif") no-repeat left bottom;
+	padding: 0 0 0 9px;
+	margin-top: 1px;
+}
+
+#navH a {
+	float: left;
+	display: block;
+	background: url("../images/navH_right.gif") no-repeat right bottom;
+	font-weight: bold;
+	color: #5F9600;
+	padding: 0px 15px 2px 6px;
+	font-size: 0.8em;
+
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#navH a {
+	float: none;
+}
+
+#navL p, #navL form {
+	float: none;
+}
+
+/* End IE5-Mac hack */
+
+#navH a:hover {
+	color: #353535;
+}
+
+#navH .active {
+	background-image: url("../images/navH_left_on.gif");
+	margin-top: 0px;
+}
+
+#navH .active a {
+	background-image: url("../images/navH_right_on.gif");
+	color: #353535;
+	padding: 7px 15px 4px 6px;
+	font-size: 1.0em;
+	text-decoration: none;
+}

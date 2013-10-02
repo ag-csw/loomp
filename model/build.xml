@@ -1,0 +1,89 @@
+<project default="compile">
+	<description>Module contains the domain model classes of loomp and a generator for test data</description>
+
+	<property file="${basedir}/build.properties.user"/>
+	<property file="${basedir}/build.properties"/>
+
+	<property name="javac.debug" value="true"/>
+	<property name="javac.deprecation" value="false"/>
+	<property name="debug" value="false"/>
+
+	<!-- defining groovy task -->
+	<path id="groovy.classpath">
+		<fileset dir="${grails.home}/lib">
+			<include name="groovy-all-*.jar"/>
+		</fileset>
+	</path>
+	<taskdef name="groovy"
+			 classname="org.codehaus.groovy.ant.Groovy"
+			 classpathref="groovy.classpath"/>
+	<taskdef name="groovyc"
+			 classname="org.codehaus.groovy.ant.Groovyc"
+			 classpathref="groovy.classpath"/>
+
+
+	<!-- compiling source code -->
+	<path id="build.classpath">
+		<fileset dir="${libdir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${grails.home}/lib">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement location="${builddir.classes}"/>
+	</path>
+
+	<target name="compile" depends="compile-java, compile-groovy" description="Compile the module model"/>
+
+
+	<!-- JAVA -->
+	<target name="compile-java" depends="structure" description="Compile java code">
+		<javac classpathref="build.classpath" destdir="${builddir.classes}"
+			   debug="${javac.debug}" deprecation="${javac.deprecation}" nowarn="on">
+			<src path="${srcdir.java}"/>
+		</javac>
+	</target>
+
+
+	<!-- GROOVY -->
+	<target name="compile-groovy" depends="structure" description="Compile groovy code">
+		<groovyc classpathref="build.classpath" destdir="${builddir.classes}">
+			<src path="${srcdir.groovy}"/>
+			<src path="${srcdir.test.groovy}"/>
+		</groovyc>
+	</target>
+
+
+	<!-- JAR -->
+	<target name="jar" depends="compile" description="Creates a jar file">
+		<mkdir dir="${builddir.lib}"/>
+		<jar basedir="${builddir.classes}"
+			 destfile="${builddir.lib}/loomp.jar"
+			 includes="**/*.class"/>
+	</target>
+
+	<!-- CLEAN -->
+	<target name="clean" description="Remove build directory but not the jar file">
+		<delete dir="${builddir}"/>
+	</target>
+
+	<target name="clean-all" depends="clean" description="Remove build directory and the directory of the built libs">
+		<delete dir="${builddir.lib}"/>
+	</target>
+
+
+	<!-- DEPLOY -->
+	<target name="deploy" depends="jar" description="Copies the jar file to a given set of directories">
+		<groovy>
+			def ant = new groovy.util.AntBuilder()
+			properties.deploydirs.split(';').each {
+			ant.copy(file: "${properties['builddir.lib']}/loomp.jar", todir: it)
+			}
+		</groovy>
+	</target>
+
+	<!-- auxiliary -->
+	<target name="structure" description="Create build directory structure">
+		<mkdir dir="${builddir.classes}"/>
+	</target>
+</project>
