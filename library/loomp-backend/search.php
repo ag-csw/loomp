@@ -29,11 +29,11 @@ function searchGetIndex() {
 function searchQuery($query, $size = SEARCH_RESULTS_SIZE) {
 	$index = searchGetIndex();
 	Zend_Search_Lucene::setResultSetLimit($size);
-	return $index->find(mb_convert_encoding($query,INDEX_CHARSET));
+	return $index->find($query);
 }
 
 function searchMashups($query, $start = 0, $limit = 20) {
-	$results = searchQuery("searchtext:$query~0.8",0);
+	$results = searchQuery("searchtext:\"$query\"~0.8",0);
 	$mashups = array();
 	$results = array_slice($results,$start,$limit);
 
@@ -48,7 +48,7 @@ function searchMashups($query, $start = 0, $limit = 20) {
 }
 
 function searchFragmentsForUser($user, $query) {
-	$results = searchQuery("user: \"$user\" AND searchtext:$query~0.8");
+	$results = searchQuery("user: \"$user\" AND searchtext:\"$query\"~0.8");
 	$fragments = array();
 	foreach ($results as $result) {
 		$fragments[] = new Fragment($result->uri, $result->user, $result->created, $result->modified, $result->title, $result->content);
@@ -72,13 +72,13 @@ function searchImportAll($index) {
 function searchImportFragment($fragment, $index) {
 	if ($fragment->getType() != "text") return;
 	$doc = new Zend_Search_Lucene_Document();
-	$doc->addField(Zend_Search_Lucene_Field::Text('uri', $fragment->getUri()),INDEX_CHARSET);
-	$doc->addField(Zend_Search_Lucene_Field::Text('user', $fragment->getCreatorId()),INDEX_CHARSET);
-	$doc->addField(Zend_Search_Lucene_Field::Text('created', $fragment->getCreateDate()),INDEX_CHARSET);
-	$doc->addField(Zend_Search_Lucene_Field::Text('modified', $fragment->getModifyDate()),INDEX_CHARSET);
-	$doc->addField(Zend_Search_Lucene_Field::Text('title', $fragment->getTitle()),INDEX_CHARSET);
-	$doc->addField(Zend_Search_Lucene_Field::Text('content', $fragment->getSaveContent()),INDEX_CHARSET);
-	$doc->addField(Zend_Search_Lucene_Field::Text('searchtext', $fragment->getTitle() . " " . $fragment->getContent()),INDEX_CHARSET);
+	$doc->addField(Zend_Search_Lucene_Field::text('uri', $fragment->getUri(),INDEX_CHARSET));
+	$doc->addField(Zend_Search_Lucene_Field::text('user', $fragment->getCreatorId(),INDEX_CHARSET));
+	$doc->addField(Zend_Search_Lucene_Field::text('created', $fragment->getCreateDate(),INDEX_CHARSET));
+	$doc->addField(Zend_Search_Lucene_Field::text('modified', $fragment->getModifyDate(),INDEX_CHARSET));
+	$doc->addField(Zend_Search_Lucene_Field::text('title', $fragment->getTitle(),INDEX_CHARSET));
+	$doc->addField(Zend_Search_Lucene_Field::text('content', $fragment->getSaveContent(),INDEX_CHARSET));
+	$doc->addField(Zend_Search_Lucene_Field::text('searchtext', $fragment->getTitle() . " " . $fragment->getContent(),INDEX_CHARSET));
 	$ret = $index->addDocument($doc);
 }
 

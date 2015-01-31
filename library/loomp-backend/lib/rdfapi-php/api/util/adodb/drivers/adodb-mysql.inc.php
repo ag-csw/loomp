@@ -363,6 +363,7 @@ class ADODB_mysql extends ADOConnection {
 			$this->_connectionID = mysql_connect($argHostname,$argUsername,$argPassword);
 	
 		if ($this->_connectionID === false) return false;
+		mysql_set_charset('utf8', $this->_connectionID);
 		if ($argDatabasename) return $this->SelectDB($argDatabasename);
 		return true;	
 	}
@@ -377,6 +378,7 @@ class ADODB_mysql extends ADOConnection {
 		else
 			$this->_connectionID = mysql_pconnect($argHostname,$argUsername,$argPassword);
 		if ($this->_connectionID === false) return false;
+		mysql_set_charset('utf8', $this->_connectionID);
 		if ($this->autoRollback) $this->RollbackTrans();
 		if ($argDatabasename) return $this->SelectDB($argDatabasename);
 		return true;	

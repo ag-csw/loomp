@@ -112,7 +112,7 @@ function editorSearchUpdateCall() {
 	mashupChunksList.innerHTML = '<li>searching...</li>'
 	oldQuery = query;
 	$('query-button').style.display = 'inline';
-	new Ajax.Request('mashup/search?query=' + escape(query) + '&user=' + userUri,
+	new Ajax.Request('mashup/search?query=' + encodeURIComponent(query) + '&user=' + userUri,
 	  {
 	    method:'get',
 	    onSuccess: function(transport){
@@ -153,7 +153,7 @@ function editorSearchClear() {
 function editorAnnotCreate(type,query,selection,button) {
 	var annots = null;	
 	//alert("type "+type+" selection "+selection+" button "+button+" query "+query);
-	new Ajax.Request('mashup/getresources?type=' + escape(type) + '&query=' + escape(query), {
+	new Ajax.Request('mashup/getresources?type=' + encodeURIComponent(type) + '&query=' + encodeURIComponent(query), {
 		method:'get',
 		onSuccess: function(transport) {
 			annots = transport.responseText.evalJSON(false);
@@ -191,7 +191,7 @@ function searchMatchingRes() {
 	var annots = null;	
 	//alert("type "+type+" label "+label);
 	
-	new Ajax.Request('mashup/getmatchingres?type=' + escape(type) + '&query=' + escape(query), {
+	new Ajax.Request('mashup/getmatchingres?type=' + encodeURIComponent(type) + '&query=' + encodeURIComponent(query), {
 		method:'get',
 		onSuccess: function(transport) {
 			annots = transport.responseText.evalJSON(false);
@@ -227,7 +227,7 @@ function connectResources(subject_uri, pradicate, object_uri) {
 	//alert(subject_uri+" "+ pradicate+" "+ object_uri);
 	//alert("Creating Ressource with type: "+type+" and value: "+value);
 	
-	new Ajax.Request('mashup/connectres?subjuri=' + escape(subject_uri) + '&type=' + escape(pradicate) + '&objuri=' + escape(object_uri), {
+	new Ajax.Request('mashup/connectres?subjuri=' + encodeURIComponent(subject_uri) + '&type=' + encodeURIComponent(pradicate) + '&objuri=' + encodeURIComponent(object_uri), {
 		method:'get',
 		onSuccess: function(transport) {
 			antwort = transport.responseText;
@@ -312,7 +312,7 @@ function editorAnnotRemote() {
 	var se = tinyMCEPopup.getWindowArg('selection',null);
 	var label = se.getContent();
 	$('remotereslist').innerHTML = "loading...";
-	new Ajax.Request('../../../../mashup/getforeignres?query=' + escape(label), {
+	new Ajax.Request('../../../../mashup/getforeignres?query=' + encodeURIComponent(label), {
 		method:'get',
 		onSuccess: function(transport) {
 			var data = transport.responseText.evalJSON(false);
@@ -334,7 +334,7 @@ function editorAnnotRemote() {
 function editorAnnotNew(type,value) {
 	var uri;
 	//alert("Creating Ressource with type: "+type+" and value: "+value);
-	new Ajax.Request('../../../../mashup/createresource?type=' + escape(type) + '&value=' + escape(value), {
+	new Ajax.Request('../../../../mashup/createresource?type=' + encodeURIComponent(type) + '&value=' + encodeURIComponent(value), {
 		method:'get',
 		onSuccess: function(transport) {
 			uri = transport.responseText;

@@ -141,17 +141,17 @@ class MashupController extends LoompAction
 	}
 	
 	public function searchAction() {
-    	$this->disableLayout();
-        $userUri = $this->getRequest()->getParam(MashupController::USER_PARAM,false);
-        $query = $this->getRequest()->getParam(MashupController::QUERY_PARAM,false);
-   		if(!$userUri || !$query || !Zend_Uri::check($userUri)) 
-  			$this->sendError("Usage: ?" . MashupController::USER_PARAM . "=[User URI]&".MashupController::QUERY_PARAM."=[Search Query]");		
-  		$m = searchFragmentsForUser($userUri, $query);
-  		if (count($m) == 0) {
-  			print MashupController::EMPTY_RESPONSE; 
-  			$this->getLog()->info("Fragment search for " . $query . " found no results");
-  			
-  		}
+  	$this->disableLayout();
+    $userUri = $this->getRequest()->getParam(MashupController::USER_PARAM,false);
+    $query = $this->getRequest()->getParam(MashupController::QUERY_PARAM,false);
+    if(!$userUri || !$query || !Zend_Uri::check($userUri)) 
+		$this->sendError("Usage: ?" . MashupController::USER_PARAM . "=[User URI]&".MashupController::QUERY_PARAM."=[Search Query]");		
+		$m = searchFragmentsForUser($userUri, $query);
+		if (count($m) == 0) {
+			print MashupController::EMPTY_RESPONSE; 
+			$this->getLog()->info("Fragment search for " . $query . " found no results");
+			
+		}
 		if ($m) {
 			$this->_helper->json->sendJson(array_slice($m,0,10));
   			$this->getLog()->info("Fragment search for " . $query . " found some results");

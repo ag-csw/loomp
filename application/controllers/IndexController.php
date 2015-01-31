@@ -24,10 +24,9 @@ class IndexController extends LoompAction {
 	public function searchAction()  {
 		$req = $this->getRequest();
     	$query = trim(urldecode($req->getParam('query')));
+
     	$page = trim(urldecode($req->getParam('page')));
-    	
-    	$this->getLog()->info("Displayed search results for $query");	
-    	
+    	$this->getLog()->info("Displayed search results for $query");	    	
     	
     	$config = Zend_Registry::getInstance()->configuration->search;
     	$n = $config->resultsperpage;

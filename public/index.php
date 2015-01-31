@@ -3,7 +3,9 @@
 ini_set('display_errors', false);
 ini_set('short_open_tags', true);
 
-date_default_timezone_set("Europe/Amsterdam"); 
+setlocale(LC_ALL, "en_US.UTF-8");
+
+date_default_timezone_set("Europe/Berlin"); 
 // Step 1 .. 3 in file application/initialize.php
 require '../application/initialize.php';
 

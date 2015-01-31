@@ -136,7 +136,7 @@ class LoginController extends LoompAction {
 			"?key=" . $activationkey;
 			
 		// send e-mail to user
-		$mail = new Zend_Mail();
+		$mail = new Zend_Mail('UTF-8');
 		$mail->setBodyHTML("Welcome to LOOMP!\n <a href='$activation_link'>Activate your account by clicking here</a>.");
 		$mail->setFrom('loomp@' . $server_config->host, 'LOOMP Registration');
 		$mail->addTo($user->getEmail(), $user->getFullname());
