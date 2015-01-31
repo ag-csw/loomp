@@ -146,7 +146,6 @@ class MashupController extends LoompAction
         $query = $this->getRequest()->getParam(MashupController::QUERY_PARAM,false);
    		if(!$userUri || !$query || !Zend_Uri::check($userUri)) 
   			$this->sendError("Usage: ?" . MashupController::USER_PARAM . "=[User URI]&".MashupController::QUERY_PARAM."=[Search Query]");		
-  		
   		$m = searchFragmentsForUser($userUri, $query);
   		if (count($m) == 0) {
   			print MashupController::EMPTY_RESPONSE; 

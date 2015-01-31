@@ -5,8 +5,7 @@ define('SEARCH_IMPORT_SIZE', 100);
 define('SEARCH_RESULTS_SIZE', 50);
 define('INDEX_CHARSET','utf-8');
 
-//setlocale(LC_CTYPE, 'de_DE.utf-8') or die('unable to set locale');
-
+setlocale(LC_CTYPE, 'de_DE.utf-8') or die('unable to set locale');
 Zend_Search_Lucene_Analysis_Analyzer::setDefault(new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
 Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding(INDEX_CHARSET);
 
@@ -19,7 +18,6 @@ function searchGetIndex() {
 		try {
 			$index = Zend_Search_Lucene::create(SEARCH_INDEX_LOCATION);
 			searchImportAll($index);
-			//print "Index created";
 		}
 		catch (Exception $e) {
 			print "something really bad happened.";	
@@ -38,6 +36,7 @@ function searchMashups($query, $start = 0, $limit = 20) {
 	$results = searchQuery("searchtext:$query~0.8",0);
 	$mashups = array();
 	$results = array_slice($results,$start,$limit);
+
 	$la = getLA();
 	foreach ($results as $result) {
 		$ms = $la->getMashupsForFragment($result->uri);
@@ -67,11 +66,11 @@ function searchImportAll($index) {
 		}
 		$start = $start + SEARCH_IMPORT_SIZE;
 	} while (count($fragments) > 0);
+	$index->commit();
 }
 
 function searchImportFragment($fragment, $index) {
 	if ($fragment->getType() != "text") return;
-	
 	$doc = new Zend_Search_Lucene_Document();
 	$doc->addField(Zend_Search_Lucene_Field::Text('uri', $fragment->getUri()),INDEX_CHARSET);
 	$doc->addField(Zend_Search_Lucene_Field::Text('user', $fragment->getCreatorId()),INDEX_CHARSET);
@@ -80,13 +79,14 @@ function searchImportFragment($fragment, $index) {
 	$doc->addField(Zend_Search_Lucene_Field::Text('title', $fragment->getTitle()),INDEX_CHARSET);
 	$doc->addField(Zend_Search_Lucene_Field::Text('content', $fragment->getSaveContent()),INDEX_CHARSET);
 	$doc->addField(Zend_Search_Lucene_Field::Text('searchtext', $fragment->getTitle() . " " . $fragment->getContent()),INDEX_CHARSET);
-	$index->addDocument($doc);
+	$ret = $index->addDocument($doc);
 }
 
 function searchUpdateFragment($fragment) {
 	$index = searchGetIndex();
 	searchDeleteFragment($fragment);
 	searchImportFragment($fragment, $index);
+	$index->commit();
 }
 
 function searchDeleteFragment($fragment) {
@@ -95,12 +95,10 @@ function searchDeleteFragment($fragment) {
 	foreach ($remove as $old_fragment) {
 	    $index->delete($old_fragment->id);
 	}
+	$index->commit();
 }
 
 function getLA() {
 	return Zend_Registry::getInstance()->loompApi;
 }
-
-//print "<pre>";
-//print_r(searchFragmentsForUser("http://www.loomp.org/users/hannes","nummer"))
 ?>

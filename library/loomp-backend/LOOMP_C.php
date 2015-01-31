@@ -71,8 +71,10 @@ class LOOMP {
         return new Resource(self::LOOMP_NS . "type");
     }
 
-    function CONTAINS() {
-    	return new Resource(self::LOOMP_NS . "contains");    }
+    function CONTAINS() {
+
+    	return new Resource(self::LOOMP_NS . "contains");
+    }
     
     function REFERS_TO() {
 	
