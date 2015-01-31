@@ -1,0 +1,9 @@
+<? // $f has to contain a fragment instance! ?>
+
+<item>
+      <title><?= $this->f->getTitle() ?></title>
+      <link><?= TPL_BASE_PATH ?>&amp;mashup=<?= $this->m->getUri() ?></link>
+      <guid><?= $this->f->getUri() ?></guid>
+      <pubDate><?= date("r",strtotime($this->f->getModifyDate())) ?></pubDate>
+      <description><?= strip_tags($this->f->getContent()) ?></description>
+</item>

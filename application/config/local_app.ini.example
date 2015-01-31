@@ -1,0 +1,12 @@
+[development]
+server.path = "/lp/public/"
+server.host = "localhost"
+rap.path = "/lp/public/data/"
+loomp.base = "http://localhost/lp/public/"
+
+loomp.db.type = "MYSQL"
+loomp.db.host = "localhost"
+loomp.db.name = "loomp"
+loomp.db.user = "loomp"
+loomp.db.pass = "loomp"
+

@@ -1,0 +1,25 @@
+<h1><?=$this->translate('Search results')?></h1>
+
+<? if ($this->has_prev || $this->has_next) { ?>
+	<div class="pagination">
+	<? if ($this->has_prev) { ?><a href="?query=<?=$this->query?>&amp;page=<?=$this->page-1?>"><?=$this->translate('previous page')?></a><? } ?>
+	<? printf($this->translate('Page %1$s'),$this->page+1) ?>
+	<? if ($this->has_next) { ?><a href="?query=<?=$this->query?>&amp;page=<?=$this->page+1?>"><?=$this->translate('next page')?></a><? } ?>
+	</div>
+<? } ?>
+
+<? if (sizeof($this->mashups) > 0) { ?>
+	<div id="resultMashups">
+	<? foreach ($this->mashups as $m) { print $this->assign('m',$m)->render('mashup-teaser.phtml'); } ?>
+	</div>
+<? } else { ?>
+	<?=$this->translate('No Results found.')?>
+<? } ?>
+
+<? if ($this->has_prev || $this->has_next) { ?>
+	<div class="pagination">
+	<? if ($this->has_prev) { ?><a href="?query=<?=$this->query?>&amp;page=<?=$this->page-1?>"><?=$this->translate('previous page')?></a><? } ?>
+	<? printf($this->translate('Page %1$s'),$this->page+1) ?>
+	<? if ($this->has_next) { ?><a href="?query=<?=$this->query?>&amp;page=<?=$this->page+1?>"><?=$this->translate('next page')?></a><? } ?>
+	</div>
+<? } ?>

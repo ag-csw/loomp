@@ -1,0 +1,568 @@
+<html>
+	<head>
+		<title>Connect Ressources</title>
+		<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+		<script type="text/javascript" src="../../../loomp.js"></script>
+		<script type="text/javascript" src="../../../scriptaculous/prototype.js"></script>
+
+		<script type="text/javascript" src="../../../scriptaculous/scriptaculous.js"></script>
+		
+		
+		<style type="text/css">
+			div.autocomplete {
+			  position:absolute;
+			  width:250px;
+			  background-color:white;
+			  border:1px solid #888;
+			  margin:0;
+			  padding:0;
+			}
+			div.autocomplete ul {
+			  list-style-type:none;
+			  margin:0;
+			  padding:0;
+			}
+			div.autocomplete ul li.selected { background-color: #ffb;}
+			div.autocomplete ul li {
+			  list-style-type:none;
+			  display:block;
+			  margin:0;
+			  padding:2px;
+			  height:20px;
+			  cursor:pointer;
+			}
+			
+			
+			div.resource_div_style{
+				width:498px; height:80px;  background-image:url('res_bg.jpg'); border:1px solid; overflow:auto; padding-left:5px; padding-right:5px;
+			}
+			
+			div.resource_found_style{
+				height:80px;  background-image:url('res_bg.jpg'); border:1px solid; cursor:pointer; overflow:auto;	padding-left:5px; padding-right:5px;
+			}
+			
+			div.resource_found_style:hover{
+				height:80px;  background-image:url('res_bg2.gif'); border:1px solid; cursor:pointer; overflow:auto; padding-left:5px; padding-right:5px;
+			}
+			
+
+		</style>
+		
+		
+
+		
+	<script type="text/javascript">
+
+			/* Properties of the subject resource */
+			var annots = tinyMCEPopup.getWindowArg('annots',[]);
+			
+			/* annotType is the type of the selected resource e.g. cityName */
+			var annotType = tinyMCEPopup.getWindowArg('annotType',[]);
+			/* currentVocab is the current Vocabulary, which is selected in the FluentControl e.g. 'Geography'*/
+			var currentVocab = tinyMCEPopup.getWindowArg('currentVocab',[]);
+			
+			/* selects only those Elements out of the geoSubjectToPredicateMap (@see:loomp.js), 
+			which corespond to the current Vocabulary and the annoType of the selected Resource */
+			var predicates;
+			
+			/* The URI of this fragment */
+			//var fragmentURI = tinyMCEPopup.getWindowArg('fragmentURI',[]);
+			
+			
+			var selectedResItem = null;
+			
+			
+			var annotURI = tinyMCEPopup.getWindowArg('annotURI',[]);
+			
+			/* Container for the objects */
+			var objects;
+			
+			/* Vocabularyprefix, e.g. http://www.loomp.org/ontology/geography# */
+			var vocabPrefix = null;
+			
+			/* URI of the target ressource (object) */
+			var targetObjectURI = null;
+			
+			/* URI of the selected ressource (subject) */
+			var subjectURI = null;
+			
+			/* predicate between subject and object for the link */
+			var predicate = null;
+
+			
+			/** init, called, when the body html part is loaded */
+			function init() {
+			
+				var name = navigator.appName
+										
+				predicates = eval(selectPredicates(annotType, currentVocab));				
+							
+				getSubjectInfo();
+
+				selectVocabPrefix(currentVocab);				
+				
+				if (name == "Microsoft Internet Explorer") displaySelectBoxWithPredicatesForIE();
+				else displayPredicates();
+				
+				
+				loadFragmentResources();
+				
+				
+				//alert(predicates);
+			
+			}
+			
+			
+			
+			
+			function loadFragmentResources() {
+			
+				new Ajax.Request('../../../../mashup/resourceinfragment?annoturi=' + escape(annotURI), {
+					method:'get',
+					onSuccess: function(transport) {
+						annots = transport.responseText.evalJSON(false);								
+						
+						
+						displayFoundResources(annots);
+						
+					},
+					onFailure: function(transport){ 
+						alert('ERROR: ' + transport.responseText); 
+					}
+				}); 
+			
+			}
+			
+			
+			
+			
+			
+			function displayPredicates() {
+			
+				new Autocompleter.Local('predicate_input', 'predicate_list', predicates, {afterUpdateElement : getSelectionId});				
+				
+				$('predicate_input').focus();
+			
+			}
+			
+			
+			function displaySelectBoxWithPredicatesForIE() {
+			
+				$('predicate_input_div').style.display = 'none';
+				$('predicate_input_div_ie_only').style.display = 'block';
+			
+				// empty the predicates container
+				var pred_laenge = document.predicate_form.predicate_select.length;
+				for (var i=0; i < pred_laenge; i++){
+					document.predicate_form.predicate_select.options[document.predicate_form.predicate_select.length-1] = null;
+				}
+				
+				
+				var emptyOption = new Option("-----", "-----", false, true);
+				document.predicate_form.predicate_select.options[document.predicate_form.predicate_select.length] = emptyOption;
+				
+				// now fill it with values
+				for (var j=0; j < predicates.length; j++) {		
+					var newval = new Option(predicates[j], predicates[j], false, true);
+					document.predicate_form.predicate_select.options[document.predicate_form.predicate_select.length] = newval;
+				}
+				
+				document.predicate_form.predicate_select.selectedIndex = 0;
+			
+			}
+			
+			
+			function choosePredicateTargets() {
+			
+				if(document.predicate_form.predicate_select.value == "-----") {
+					predicate = null;
+					return;
+				}
+			
+				getSelectionId(document.predicate_form.predicate_select, null);
+			
+			}
+			
+			
+			
+			/** Get the properties of the selected resource and display them in the div container */
+			function getSubjectInfo() {
+			
+				var subjectDiv = $('res_connect_anzeige_mitte');			
+				
+				var keytext = "";
+				var itemuri="";
+				
+				var container = new Array();
+				
+				container[0] = new Object();				
+				
+				
+
+				tinymce.each(annots, function(annot,key) {
+				
+					var annot = annots[key];
+					
+					var allkeys = Object.keys(annot);
+					
+					//alert(annot.toSource()+" ------ "+allkeys.toSource()+"---------"+key);
+					
+					
+					if(annot['http://www.w3.org/1999/02/22-rdf-syntax-ns#type']!=null)
+						container[0]['type'] = annot['http://www.w3.org/1999/02/22-rdf-syntax-ns#type'][0];
+					//alert(container[0]['type']);
+					var labelCandidate = findLabelKey(container[0]['type']);
+					if(labelCandidate!='undefined') {
+						container[0]['type'] = nonRauteDesc(basename(container[0]['type']));
+						container[0][nonRauteDesc(basename(labelCandidate))] = annot[labelCandidate];
+						$('mainTargetLabel').innerHTML = container[0][nonRauteDesc(basename(labelCandidate))];
+						$('mainTargetLabelDesc').innerHTML = nonRauteDesc(basename(labelCandidate));
+						$('mainTargetType').innerHTML = container[0]['type'];
+						$('mainTargetTypeDesc').innerHTML = 'Type';						
+					} else{
+						if(allkeys.length>0) {
+							//alert(annot.toSource()+" -----" +allkeys);
+							labelCandidate = allkeys[0];
+							var tempval = annot[labelCandidate].toString();
+							//$('mainTargetLabel').innerHTML = nonRauteDesc(basename(annot[labelCandidate]));
+							$('mainTargetLabel').innerHTML = nonRauteDesc(basename(tempval));
+							$('mainTargetLabelDesc').innerHTML = nonRauteDesc(basename(allkeys[0]));
+						}
+					
+					}
+					container[0]['otherprops'] = new Object();
+				
+					tinymce.each(annot, function(pval,pkey) {
+						var pval = annot[pkey];
+						
+						//keytext = keytext+"<strong>"+nonRauteDesc(basename(pkey)) + "</strong> : " + nonRauteDesc(basename(pval))+ "<br />";
+						//alert(annot.toSource());
+						
+						var temppval = pval.toString();
+						//for(var i=0; i<pval.length; i++) {
+							//temppval = temppval+", "+pval[i];
+						//}
+						
+						//if(pkey!='http://www.w3.org/1999/02/22-rdf-syntax-ns#type' && pkey!=labelCandidate) {
+							//container[0]['otherprops'][nonRauteDesc(basename(pkey))] = nonRauteDesc(basename(pval));							
+							//keytext = keytext+"<strong>"+nonRauteDesc(basename(pkey)) + "</strong> : " + nonRauteDesc(basename(pval))+ "<br />";
+						//}
+						if(pkey!='http://www.w3.org/1999/02/22-rdf-syntax-ns#type' && pkey!=labelCandidate) {
+							container[0]['otherprops'][nonRauteDesc(basename(pkey))] = nonRauteDesc(basename(temppval));
+							
+							keytext = keytext+"<strong>"+nonRauteDesc(basename(pkey)) + "</strong> : " + nonRauteDesc(basename(temppval))+ "<br />";
+						}
+						
+					});					
+					
+					itemuri = key;
+					
+				});
+				
+				
+				//alert(container[0]['otherprops'].length);
+				/*
+				for(var i=0; i<container[0]['otherprops'].length; i++) {
+				
+					keytext = keytext+"<strong>"+ container[0]['otherprops'][i] + "</strong> : " +container[0]['otherprops'][i]+ "<br />";
+				
+				}
+				*/
+				
+				subjectDiv.innerHTML = keytext+" <br /><strong>uri :</strong> "+itemuri;
+				subjectURI = itemuri;				
+			
+			}
+			
+			
+			
+			
+			
+			function findLabelKey(candidate) {
+			
+				switch(candidate) {
+					case 'http://www.loomp.org/ontology/geography#Country': 
+						return 'http://www.loomp.org/ontology/geography#countryName';
+						break;
+					case 'http://www.loomp.org/ontology/geography#City': 
+						return 'http://www.loomp.org/ontology/geography#cityName';
+						break;	
+					default:
+						return 'undefined';
+				}
+			
+			}
+			
+			
+			
+			
+			/** Sets the vocabulary prefix */
+			function selectVocabPrefix(vocab) {
+			
+				switch(vocab) {
+				
+					case 'Geography': 
+						vocabPrefix = 'http://www.loomp.org/ontology/geography#';
+					break;
+					default:
+						alert('Unknown vocab: ' + vocab );
+					break;
+				
+				}
+				
+			
+			}
+			
+			
+
+			
+			/** Part of the Autocompleter Plugin. Function is called, when one of the list elements (autocompletion) is selected */
+			function getSelectionId(text, li) {
+				
+				objects = eval(selectObjects(text.value, currentVocab));
+				
+				$('object_input').disabled=false;
+				$('object_input').value = "<all>";
+				$('object_input').focus();		
+
+				$('resConSearchButton').disabled=false;
+				
+				predicate = vocabPrefix + text.value;
+				
+			}
+			
+			
+			/** Clears the given Div */
+			function clear(thediv) {
+				var nj = document.getElementById(thediv);
+				if (nj != null) {
+					while (nj.hasChildNodes()) {
+						nj.removeChild(nj.lastChild);
+					}
+				}
+			}
+			
+			
+			
+			/** For each possible resource object, set the prefix and lookup, if there are resources (@see - searchMatchingRes(predicate, resLabel)) */
+			function displayMatchingRessources() {
+			
+
+				/* clear the div container, containing results */
+				clear('resConSearchResults');
+			
+				/* Disable the 'connect resources' button */
+				$('resConnectButton').disabled=true;
+				/* No Target Resource (object) selected */
+				targetObjectURI = null;
+				
+				var resLabel = $('object_input').value;						
+								
+				for (var i = 0; i < objects.length; i++) {					
+
+					var resType = vocabPrefix+objects[i];
+						
+					searchMatchingRes(resType, resLabel);
+				
+				}
+
+			
+			}
+			
+			
+			
+			
+			/** Display found resources  */
+			function displayFoundResources(annots) {
+			
+				/* clear the div container, containing results */
+				//clear('resConSearchResults');			
+			
+				// return if no match found
+				if(annots=="") return;
+						
+				var parent = $('resConSearchResults');
+								
+				//alert(annots.toSource());
+						
+				var index = 0;
+								
+				tinymce.each(annots, function(annot,key) {
+								
+					var newdiv = document.createElement('div');	
+					var divIdName = 'resource_'+index;		
+					newdiv.setAttribute('id',divIdName);
+					// make it work in IE
+					$(newdiv).addClassName('resource_found_style');
+					newdiv.onclick = function() {
+						chooseResourceFromList(this);
+					}
+									
+					var keytext ="";
+						
+					var itemuri="";
+			
+					var annot = annots[key];					
+
+										
+					tinymce.each(annot, function(pval,pkey) {
+									
+						var pval = annot[pkey];
+
+						var temppval = pval.toString();
+										
+						keytext = keytext+"<strong>"+nonRauteDesc(basename(pkey)) + "</strong> : " + nonRauteDesc(basename(temppval))+ "<br />";
+					});
+					
+					
+					
+					itemuri = key;
+									
+					newdiv.innerHTML = keytext+" <br /><strong>uri :</strong> <span id='"+newdiv.id+"_uri'>"+itemuri+"</span>";
+								
+					parent.appendChild(newdiv);
+									
+					index++;
+									
+				});
+			
+			}
+			
+			
+			
+			/** Makes an ajax-request for the given predicate and label. For each found resource creates a div-element */
+			function searchMatchingRes(predicate, resLabel) {
+				
+				var query = "";				
+				var subjectUri = 'none';
+				
+				new Ajax.Request('../../../../mashup/resourcebypredandlabel?predicate=' + escape(predicate) + '&reslabel='+ escape(resLabel), {
+							method:'get',
+							onSuccess: function(transport) {
+								annots = transport.responseText.evalJSON(false);								
+								
+								displayFoundResources(annots);								
+
+							},
+							onFailure: function(transport){ 
+								alert('ERROR: ' + transport.responseText); 
+							}
+						}); 
+				
+						
+			}
+			
+
+			
+			
+			/** Triggered by clicking on one of the found resources in the list */
+			function chooseResourceFromList(thediv) {	
+
+				/*  FIXME var results = $('resConSearchResults').getElementsByClassName('resource_found_style');
+				
+				for(var i=0; i < results.length; i++)
+				results[i].style.backgroundImage = 'url(res_bg.jpg)'; */
+				
+				if(selectedResItem!= null) {
+		
+					selectedResItem.style.backgroundImage = 'url(res_bg.jpg)';	
+				}
+				
+				thediv.style.backgroundImage = 'url(res_bg_selected.gif)';
+				selectedResItem = thediv;
+				
+				$('resConnectButton').disabled=false;
+				targetObjectURI = thediv.getElementsByTagName("span")[0].innerHTML;	
+				//var ttt = document.getElementById(thediv.id+"_uri");
+				//alert(subjectURI+" "+ (vocabPrefix+$('predicate_input').value) +" "+targetObjectURI+" "+ttt.innerHTML);	
+			}
+			
+			
+			
+			/** Sends an AJAX request to backend to connect the specified resources and predicate */
+			function createNewRessourceLink() {
+			
+			
+				if(predicate == null || predicate =="") {
+					alert("There is no predicate set.");
+					return;
+				}
+			
+				var antwort;
+				
+				
+				
+				new Ajax.Request('../../../../mashup/connectres?subjuri=' + escape(subjectURI) + '&type=' + escape(predicate) + '&objuri=' + escape(targetObjectURI), {
+					method:'get',
+					onSuccess: function(transport) {
+						antwort = transport.responseText;
+						tinyMCE.activeEditor.windowManager.close(window);
+						//alert(antwort);
+						
+					},
+					onFailure: function(transport){ 
+						alert('ERROR: ' + transport.responseText); 
+					}
+				}); 
+			
+			}
+			
+			
+			
+			
+			/** Returns an array with possible predicates for this resource */
+			function selectPredicates(annotType, vocab) {
+				if(vocab == 'Geography') {
+					return geoSubjectToPredicateMap[annotType];
+				}
+			}
+			
+			/** Returns an array with possible object types for this resource */
+			function selectObjects(predicateType, vocab) {
+				if(vocab == 'Geography') {
+					return geoPredicateToObjectMap[predicateType];
+				}
+			}
+			
+	
+	
+			
+	</script>
+	</head>
+	<body onload="init()">
+		
+		<strong>Current selected Ressource (Subject):</strong> 
+		<br />
+		<br />
+		<div id="res_connect_anzeige" class="resource_div_style"  style="">
+			<div style="font-style:bold; "><span id="mainTargetLabelDesc">Label</span>: <span id="mainTargetLabel" style="font-size:large;">Undefined</span></div>
+			<div style="font-style:bold; "><span id="mainTargetTypeDesc">Type</span>: <span id="mainTargetType" style="font-size:medium;" >Undefined</span></div>
+			<div id="res_connect_anzeige_mitte"></div>
+			<!--<div id="res_bottom_expander" style="height:22px; background-color:orange; text-align:right;"> <img src="expand.png" onclick="expand(this)" style="align:right; "/></div>-->
+		</div><br /><br />
+		
+		<div id="predicate_input_div" style="float:left;">
+			Predicate: <input type="text" id="predicate_input" />		
+			<div class="autocomplete" id="predicate_list" style=""></div>
+		</div>
+		
+		<div id="predicate_input_div_ie_only" style="float:left; display:none;">
+			<form name="predicate_form">Predicate: <select name="predicate_select" id="pred_select_container" onchange="choosePredicateTargets()"></select></form>
+		</div>
+		
+		
+		<div style="float:left; margin-left:10px; ">
+			Object: <input type="text" id="object_input" disabled="true"/>	<input id="resConSearchButton" type="button" value="Search" disabled="true" onclick="displayMatchingRessources()" />
+		</div>
+		<br />
+		<br />
+		<br />
+		<div id="resConSearchResults" style="width:510px; height:240px; background-color:white; border:1px solid grey; overflow:auto;">
+		</div>
+		<br />
+		<br />
+		
+		<input type="button" id="resConnectButton" value="Connect Resources" disabled="true" onclick="createNewRessourceLink()" /><br />
+				
+	</body>
+</html>

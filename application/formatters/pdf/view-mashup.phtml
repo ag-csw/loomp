@@ -1,0 +1,16 @@
+<? // $m has to contain a mashup instance! ?>
+<div class="mashup">
+	<h1><?= $this->m->getTitle() ?></h1>
+	<div class="fragments">
+	<? foreach ($this->m->getFragments() as $f) { print $this->assign('f',$f)->render('view-fragment.phtml'); } ?>
+	</div>
+	
+	<div class="meta">
+		<span class="uri"><?= $this->m->getUri() ?></span>
+		<span class="linkedData"><a href="<?= IndexController::getDataUri($this->m->getUri()) ?>">Linked Data</a></span>
+		<span class="creatorName"><?= $this->fullname($this->m->getCreatorId()) ?></span>
+		<span class="creatorUri"><?= $this->m->getCreatorId() ?></span>
+		<span class="createDate"><?= $this->m->getCreateDate() ?></span>
+		<span class="modifyDate"><?= $this->m->getModifyDate() ?></span>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<h1><?=$this->translate('Welcome Administrator')?></h1>
+<h2><?=$this->translate('Users')?></h2>
+<table>
+
+<?php  	
+ 	foreach ($this->users as $user) {
+ 		if (!$user->isActive()) print "<tr class='not_activated'>";
+ 		else print "<tr>";
+ 		print "<td class='l_name'>" . $user->getFullName() . "</td>";
+ 		print "</td>";
+ 		print "<td class='l_organisation'>".$user->getOrganisation()."</td>";
+ 		print "<td class='l_mail'><a href='mailto:".$user->getEmail()."'>".$user->getEmail()."</a></td>";
+
+        print "<td class='l_actions'>";
+        print "<a href='#' onclick=\"confirmRedirect('" . $this->url(array('controller'=>'admin','action' => 'userdelete')) . "?user=" . $user->getId() . "','".sprintf($this->translate('Really delete user %1$s?'),$user->getEmail())."')\">".$this->translate('delete')."</a>&nbsp;";
+        if (!$user->isActive()) 
+        	print "<a href='" . $this->url(array('controller'=>'admin','action' => 'useractivate')) . "?user=" . $user->getId() . "'>".$this->translate('activate')."</a>&nbsp;";
+		else
+        	print "<a href='" . $this->url(array('controller'=>'admin','action' => 'userdeactivate')) . "?user=" . $user->getId() . "'>".$this->translate('deactivate')."</a>&nbsp;";	
+        
+        if (!$user->isAdmin()) 
+        	print "<a href='" . $this->url(array('controller'=>'admin','action' => 'userpromote')) . "?user=" . $user->getId() . "'>".$this->translate('promote')."</a>";
+        else 
+        	print "<a href='" . $this->url(array('controller'=>'admin','action' => 'userdemote')) . "?user=" . $user->getId() . "'>".$this->translate('demote')."</a>";
+        	
+        print "</td>";
+        print "</tr>";
+ 	}
+?>
+ 	
+</table>
+<br /><br />
+<h2><?=$this->translate('Template configuration')?></h2>
+<?= "<a href='" . $this->url(array('controller'=>'admin','action' => 'viewconfig'))."'>".$this->translate('edit template configuration')."</a>" ?>

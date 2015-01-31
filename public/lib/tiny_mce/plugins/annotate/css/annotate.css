@@ -1,0 +1,77 @@
+table.annotate {
+	border-spacing:0px;
+}
+
+div.annotateContainer {
+	margin:0px;
+	padding:0px;
+}
+
+div.annotate {
+	z-index:2;
+	margin:2px;
+	padding:0px 2px 2px 2px;
+	overflow:hidden;
+	position:relative;
+}
+
+ul.annotate {
+	background:#eee;
+	overflow:visible;
+	white-space:normal;
+	font-size:0px;
+	margin:0px;
+	padding:0px;
+	position:absolute;
+	top:0px;
+	border-bottom:2px solid #eee;
+	border-left:2px solid #eee;
+}
+
+li.annotate {
+	display:inline;
+	overflow:visible;
+}
+
+img.annotate_navbutton_up {
+	display:block;
+	border:1px solid grey;
+	padding:1px;
+	margin-left:6px;
+	margin-bottom:2px;
+}
+
+img.annotate_navbutton_down {
+	display:block;
+	border:1px solid grey;
+	padding:1px;
+	margin-left:6px;
+	margin-bottom:2px;
+}
+
+img.annotate_navbutton_expand {
+	display:block;
+	border:1px solid grey;
+	padding:1px;
+	margin-left:6px;
+}
+
+button.annotate_item_button {
+	overflow:hidden;
+	text-align:center;
+	margin:2px 2px 0px 0px;
+	padding:0px;
+	border:none;
+	font-size:9px;
+	width:65px;
+	height:40px;
+	background:white;
+}
+
+button.annotate_item_button:focus {
+	outline: none;
+} 
+
+span {
+	background-color: #FF8F8F;
+}

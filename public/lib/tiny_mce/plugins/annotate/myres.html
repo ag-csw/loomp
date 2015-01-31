@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>Select Resource</title>
+		<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+		<script type="text/javascript" src="../../../loomp.js"></script>
+		<script type="text/javascript" src="../../../scriptaculous/prototype.js"></script>
+	</head>
+	<body>
+		<ul>
+		<script type="text/javascript">
+			document.writeln('wtf<div id="res_anzeige"></div><br /><br />');
+			var annots = tinyMCEPopup.getWindowArg('annots',[]);
+			var propCache = tinyMCEPopup.getWindowArg('propCache',[]);			
+			tinymce.each(annots, function(annot,key) {
+				// create the fragments
+				var annot = annots[key];
+				var layer = "info_" + key;
+				//document.writeln("<li><a onmouseover=\"$('" + layer + "').style.display='block'\" onmouseout=\"$('" + layer + "').style.display='none'\" href=\"#\" onclick=\"editorAnnotFinalize('" + key + "')\">" + basename(key) + "</a>");
+				//document.writeln("<div onmouseout=\"$('" + layer + "').style.display='none'\" id=\"" + layer + "\" style=\"display:none; position: absolute; background-color: white; padding: 5px;\">");
+			/*	tinymce.each(annot, function(pval,pkey) {
+					var pval = annot[pkey];
+					document.writeln(basename(pkey) + ": " + basename(pval) + "<br />");
+				});
+				tinymce.each(propCache[key], function(pval,pkey) {
+					document.writeln(basename(pkey) + ": " + basename(pval) + "<br />");
+				});
+				document.writeln("</div></li>");
+				// TODO: get more information from annots array, already available
+				$('res_anzeige').innerHTML = "annots: "+annots.toSource()+ "<br /><br />propCache: "+propCache.toSource(); */
+				
+				var keytext = "";
+				
+				tinymce.each(annot, function(pval,pkey) {
+					var pval = annot[pkey];
+					//document.writeln(basename(pkey) + ": " + basename(pval) + "<br />");
+					 
+					keytext = keytext+nonRauteDesc(basename(pkey)) + ": " + nonRauteDesc(basename(pval))+ "<br />";
+				});
+				
+				
+				document.writeln("<div style=\"width:400px; height:80px;  background-image:url('res_bg.jpg'); border:1px solid; overflow:auto; \">uri: "+basename(key)+"<br/><br/>"+keytext+"</div>");				
+				
+			});
+			
+			
+
+			
+			
+		</script>
+		</ul>
+		<button onclick="editorAnnotFinalizeNew()">create new resource</button>
+		&nbsp;&nbsp;
+		<button onclick="editorAnnotRemote()">use remote resource</button>
+		<ul id="remotereslist"></ul>
+		<br />
+		<!--<div style="width:400px; height:80px;  background-image:url('res_bg.jpg'); border:1px solid;"></div> -->
+		
+		
+		<button onclick="tinyMCEPopup.close()">close</button>
+	</body>
+</html>

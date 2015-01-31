@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Select your favorite annotations:</title>
+	<script type="text/javascript" src="../../../scriptaculous/prototype.js"></script>
+	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script type="text/javascript" src="js/select.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/select.css" media="screen"/>
+</head>
+
+<body>
+
+<p id="text"/>
+
+<table id="annotation-chooser-table" rules="all" style="display:none;">
+	<thead>
+		<tr>
+			<th/>
+			<th>ID</th>
+			<th>In conflict with..</th>
+			<th>Type</th>
+			<th>Annotated text</th>
+			<th>See also</th>
+		</tr>
+	</thead>
+	<tbody id="annotation-chooser-tbody"/>
+</table>
+
+<input id="applyButton" type="button" value="Apply" onclick="applySelection();"/>
+
+</body>
+</html>

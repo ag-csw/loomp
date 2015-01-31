@@ -1,0 +1,36 @@
+<? // install/update.phtml ?>
+
+<div class="content660">
+	<h1>Update your database</h1>
+	
+	<?
+		if (!isset($this->loggedIn) || $this->loggedIn != true) {
+			print "<p>You need to login before you can continue.</p>";
+		} else {
+			print "<p>Testing the databse connection was successful.</p>";
+			if ($this->dbVersion < 0) {
+				print "<p>The version of your database cannot be determined. You have to update the database manually.</p>";
+			} else {
+				print "<p>The current database version is " . $this->dbVersion . ".</p>";
+				
+				if (empty($this->sqlFiles)) {
+					print "<p>Your database is up-to-date.</p>";
+					print "<p>You can login using 'admin@loomp.org' and the default password 'rdfa' (if not changed)</p>";
+					if (isset($this->hasModelUri) && !$this->hasModelUri) {
+						print "<p>It seems that the default model does not exist or has the wrong URI.</p>";
+						print $this->modelForm;
+					}
+				} else {
+					print "<p>Clicking the button below will update your database.</p>";
+					print "<p>The following files have to be executed to update your database:</p>";
+					print "<ul>";
+					foreach ($this->sqlFiles as $f) {
+						print "<li>$f</li>";
+					}
+					print "</ul>";
+					print $this->dbForm;
+				}
+			}
+		}
+	?>
+</div>

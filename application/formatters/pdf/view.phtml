@@ -1,0 +1,169 @@
+<?php
+
+define('GS_PATH',Zend_Registry::getInstance()->configuration->pdf->ghostscript);
+define('PDF_CACHE_DIR',Zend_Registry::getInstance()->configuration->pdf->cachedir);
+
+
+require_once(dirname(__FILE__).'/../../../public/formatter_res/pdf/html2pdf/config.inc.php');
+require_once(HTML2PS_DIR.'pipeline.factory.class.php');
+
+// create pdf directories
+if (!is_dir(PDF_CACHE_DIR)) mkdir(PDF_CACHE_DIR) or die("Unable to create directory" . PDF_CACHE_DIR);
+if (!is_dir(CACHE_DIR)) mkdir(CACHE_DIR) or die("Unable to create directory" . CACHE_DIR);
+if (!is_dir(OUTPUT_FILE_DIRECTORY)) mkdir(OUTPUT_FILE_DIRECTORY) or die("Unable to create directory" . OUTPUT_FILE_DIRECTORY);
+if (!is_dir(WRITER_TEMPDIR)) mkdir(WRITER_TEMPDIR) or die("Unable to create directory" . WRITER_TEMPDIR);
+
+
+@set_time_limit(10000);
+parse_config_file(HTML2PS_DIR.'html2ps.config');
+
+/**
+ * output the generated PDF directly in Browser as Download
+ */
+class MyDestinationHTTP extends Destination {
+  
+  function MyDestinationHTTP($filename) {
+    $this->Destination($filename);
+  }
+
+  function process($filename, $content_type) {
+  	
+    header("Content-Type:application/pdf");
+	header("Content-Disposition: attachment; filename=".$filename);
+    
+    //$headers = $this->headers($content_type);
+    //foreach ($headers as $header) {
+    //  header($header);
+    //};
+
+    // NOTE: readfile does not work well with some Windows machines
+    // echo(file_get_contents($tmp_filename));
+    readfile($filename);
+  }
+}
+
+class MyFetcherMemory extends Fetcher {
+  var $base_path;
+  var $content;
+
+  function MyFetcherMemory($content, $base_path) {
+    $this->content   = $content;
+    $this->base_path = $base_path;
+  }
+
+  function get_data($url) {
+    if (!$url) {
+      return new FetchedDataURL($this->content, array(), "");
+    } else {
+      // remove the "file:///" protocol
+      if (substr($url,0,8)=='file:///') {
+        $url=substr($url,8);
+        // remove the additional '/' that is currently inserted by utils_url.php
+        if (PHP_OS == "WINNT") $url=substr($url,1);
+      }
+      return new FetchedDataURL(@file_get_contents($url), array(), "");
+    }
+  }
+
+  function get_base_url() {
+    return 'file:///'.$this->base_path.'/dummy.html';
+  }
+}
+
+/**
+ * Runs the HTML->PDF conversion with default settings
+ *
+ * Warning: if you have any files (like CSS stylesheets and/or images referenced by this file,
+ * use absolute links (like http://my.host/image.gif).
+ *
+ * @param $path_to_html String HTML code to be converted
+ * @param $path_to_pdf  String path to file to save generated PDF to.
+ * @param $base_path    String base path to use when resolving relative links in HTML code.
+ */
+function convert_to_pdf($html, $path_to_pdf, $base_path) {
+  $pipeline = PipelineFactory::create_default_pipeline('', // Attempt to auto-detect encoding
+                                                       '');
+  
+  //fixing the problem with the outputfilename in http output, very ugly workaround
+  $pipeline->output_driver->filename .= ".pdf";             
+                                          
+  // Override HTML source 
+  // @TODO: default http fetcher will return null on incorrect images 
+  // Bug submitted by 'imatronix' (tufat.com forum).
+  $pipeline->fetchers[] = new MyFetcherMemory($html, $base_path);
+
+  // Override destination to local file
+  $pipeline->destination = new MyDestinationHTTP($path_to_pdf);
+  
+  $baseurl = '';
+  $media =& Media::predefined('A4');
+  $media->set_landscape(false);
+  $media->set_margins(array('left'   => 15,
+                            'right'  => 15,
+                            'top'    => 10,
+                            'bottom' => 10));
+  $media->set_pixels(1024); 
+
+  global $g_config;
+  $g_config = array(
+                    'cssmedia'     => 'screen',
+                    'scalepoints'  => '1',
+                    'renderimages' => true,
+                    'renderlinks'  => true,
+                    'renderfields' => true,
+                    'renderforms'  => false,
+                    'mode'         => 'html',
+                    'encoding'     => 'utf-8',
+                    'debugbox'     => false,
+                    'pdfversion'    => '1.4',
+                    'draw_page_border' => false
+                    );
+
+  $pipeline->configure($g_config);
+  $pipeline->process_batch(array($baseurl), $media);
+}
+
+ini_set("display_errors","0");
+ini_set("display_warnings","0");
+
+$html_output .= $this->doctype();
+$html_output .="<html xmlns='http://www.w3.org/1999/xhtml'>"; 
+$html_output .="<head>";
+$html_output .="  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' /> ";
+$html_output .="<title>";
+	if ($this->singleMashup) $html_output .=$this->mashupData->getTitle();
+	else $html_output .="Mashup";
+$html_output .="</title>";
+  
+$html_output .="  <link rel='stylesheet' href='http://".$_SERVER['HTTP_HOST'].TPL_RES_PATH.CSS."' media='screen' type='text/css' />";
+
+$html_output .="</head>";
+$html_output .="<body>";
+
+//disable and enable the display of the heade by css display attribute
+$html_output .="<div id='header>";
+$html_output .="</div>";
+
+$html_output .="<div id='content'>";
+	if (!$this->singleMashup) {
+		$html_output .="<div id='mashupList'>";
+		foreach ($this->mashupData as $m) { print $this->assign('m',$m)->render('view-mashup.phtml'); }
+		$html_output .="</div>";
+	} else {
+		$html_output .= $this->assign('m',$this->mashupData)->render('view-mashup.phtml');
+	}
+	
+$html_output .="</div>";
+
+//disable and enable the display of the footer by css display attribute
+$html_output .="<div id='footer'>";
+$html_output .="</div>";
+
+$html_output .="</body>";
+$html_output .="</html>";
+
+convert_to_pdf($html_output, '', '');
+
+//TODO: delete the temporary pdf in
+
+?>

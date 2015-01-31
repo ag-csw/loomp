@@ -1,0 +1,29 @@
+<? // $m has to contain a mashup instance! 
+	$teaser_size = 100;
+ ?>
+
+<div class="dash">
+	<div class="links">
+		<a target="_new" href="<?= $this->url(array('controller'=>'index','action' => 'view'))."?mashup=".$this->m->getUri() ?>"><?=$this->translate("view")?></a>&nbsp;
+		<? if ($this->user && ($this->m->getCreatorId() == $this->user->getUri() || $this->user->isAdmin())) { ?>
+			&nbsp;|&nbsp;
+			<a href="<?= $this->url(array('controller'=>'mashup','action' => 'index'))."?mashup=".$this->m->getUri() ?>"><?=$this->translate("edit")?></a>
+			&nbsp;|&nbsp;
+	        <a href="#" onclick="<?= "confirmRedirect('" . $this->url(array('controller'=>'mashup','action' => 'delete'))."?mashup=".$this->m->getUri() . "',' ".sprintf($this->translate("Really delete Mashup %1\$s?"),$this->m->getTitle())."')" ?>"><?=$this->translate("delete")?></a>
+        <? } ?>
+        
+	</div>
+	<div class="meshup"></div>
+	<h2><?= $this->m->getTitle() ?></h2>
+	<p class="small"><? printf($this->translate("Author: %1\$s"),$this->fullname($this->m->getCreatorId())) ?></p>
+	
+	<? foreach ($this->m->getFragments() as $f) { if (!$f) continue; ?>
+		<h4><?= $f->getTitle() ?></h4>
+		<? $fpc = strip_tags(str_replace("</p><p>"," ",$f->getContent())); ?>
+		<p><?= substr($fpc,0,$teaser_size) ?>
+		<!--<? if (strlen($fpc) > $teaser_size) { ?>
+			... <a target="_new" href="<?= $this->url(array('controller'=>'index','action' => 'view'))."?mashup=".$this->m->getUri() ?>"><?=$this->translate("more")?></a>
+		<?}?>-->
+		</p>
+	<? } ?>
+</div> <br style="clear:both;" />

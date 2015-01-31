@@ -1,0 +1,21 @@
+<? // install/database.phtml ?>
+
+<div class="content660">
+			
+	
+	<h1>Database configuration</h1>
+	
+	<p>Please enter your database connection parameters.</p>
+	
+	<?
+		if (isset($this->error)) {
+			print "<div class=\"error\">$this->error</div>";
+		}
+		if (!isset($this->loggedIn) || $this->loggedIn != true) {
+			print "<p>You need to login before you can continue.</p>";
+		} else {
+			print $this->form;
+		}
+	?>
+	
+</div>

@@ -1,0 +1,11 @@
+<? // $m has to contain a mashup instance! ?>
+<channel>
+    <title><?= $this->m->getTitle() ?></title>
+    <link><?= TPL_BASE_PATH ?>&amp;mashup=<?= $this->m->getUri() ?></link>
+    <language>de-de</language>
+    <pubDate><?= date("r",strtotime($this->m->getModifyDate())) ?></pubDate>
+	<description></description>
+	<atom:link href="<?= TPL_BASE_PATH ?>&amp;mashup=<?= $this->m->getUri() ?>" rel="self" type="application/rss+xml" />
+	
+	<? foreach ($this->m->getFragments() as $f) { print $this->assign('f',$f)->render('view-fragment.phtml'); } ?>
+</channel>

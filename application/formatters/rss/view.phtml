@@ -1,0 +1,9 @@
+<? header("Content-Type: application/rss+xml"); ?>
+<?= '<?xml version="1.0" encoding="utf-8" standalone="yes" ?>' ?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">  
+  <? if (!$this->singleMashup) { ?>
+		<? foreach ($this->mashupData as $m) { print $this->assign('m',$m)->render('view-mashup.phtml'); } ?>
+	<? } else { ?>
+		<? print $this->assign('m',$this->mashupData)->render('view-mashup.phtml'); ?>
+	<? } ?>
+</rss>

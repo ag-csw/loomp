@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Select a resource</title>
+		<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+		<script type="text/javascript" src="../../../scriptaculous/prototype.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var annots = tinyMCEPopup.getWindowArg('annots',[]);
+			var currentAnnot = tinyMCEPopup.getWindowArg('currentAnnot', {});
+			var originWindow = tinyMCEPopup.getWindowArg('originWindow', null);
+			var propCache = tinyMCEPopup.getWindowArg('propCache',[]);
+			var basename = originWindow.originWindow.basename;
+
+			document.writeln('<span>Select a resource for "' + originWindow.jsonData.text.substring(currentAnnot.begin, currentAnnot.end) + '"</span>');
+			document.writeln('<ul>');
+			tinymce.each(annots, function(annot,key) {
+				// create the fragments
+				var annot = annots[key];
+				var layer = "info_" + key;
+				document.writeln("<li><a onmouseover=\"$('" + layer + "').style.display='block'\" onmouseout=\"$('" + layer + "').style.display='none'\" href=\"#\" onclick=\"originWindow.setAbout(" + currentAnnot.index + ", '" + key + "', window);\">" + basename(key) + "</a>");
+				document.writeln("<div onmouseout=\"$('" + layer + "').style.display='none'\" id=\"" + layer + "\" style=\"display:none; position: absolute; background-color: white; padding: 5px;\">");
+				tinymce.each(annot, function(pval,pkey) {
+					var pval = annot[pkey];
+					document.writeln(basename(pkey) + ": " + basename(pval) + "<br />");
+				});
+				tinymce.each(propCache[key], function(pval,pkey) {
+					document.writeln(basename(pkey) + ": " + basename(pval) + "<br />");
+				});
+				document.writeln("<div></li>");
+				// TODO: get more information from annots array, already available 
+			});
+			document.writeln('</ul>');
+		</script>
+		<button onclick="originWindow.setNewAbout(currentAnnot.index, window);">create new resource</button>
+	</body>
+</html>

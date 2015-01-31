@@ -1,0 +1,55 @@
+<h1>View Configuration Editor</h1>
+
+
+<h2>New / Edit Configuraion</h2>
+<form method="POST" action="<?= $this->url(array('controller'=>'admin','action' => 'saveconfig')) ?>">
+<?php  	
+	print '<label>Set name: </label><input type="text" name="setTitle" value="'.@$this->setTitle.'" />';
+	foreach ($this->allconfig as $tpr => $config) {
+		print "<li>Formatter: ".$tpr;
+		print "<ul class=\"conf-values\">";
+ 		foreach ($config as $item) {
+ 			if (isset($this->setData[$tpr][$item['key']])) $val = $this->setData[$tpr][$item['key']];
+ 			else $val = $item['default'];
+ 			print "<li><label>".$item['desc'].": </label>" .'<input type="text" name="setData['.$tpr.']['.$item['key'].']" value="'.$val.'" />' . "</li>";
+ 		}
+ 		print "</ul>";
+ 		print "</li>";
+	}
+	print "</ul>";
+	print '<button type="submit">Save</button>';
+	print '<button type="reset">Cancel</button>';
+?>
+</form>
+<br /><br />
+
+
+<h2>Current Configurations</h2>
+<ul class="conf-sets">
+<?php  	
+//print "<pre>";
+//print_r($this->setData);
+//print "</pre>";
+foreach ($this->allsets as $name => $set) {
+	print "<li>Set: " . $name;
+	print "<ul class=\"conf-formatters\">";
+	foreach ($set as $tpr => $config) {
+		print "<li>Formatter: ".$tpr;
+		print "<ul class=\"conf-values\">";
+ 		foreach ($config as $key => $value) {
+ 			print "<li>".$key." = " . $value . "</li>";
+ 		}
+ 		print "</ul>";
+ 		print "</li>";
+	}
+	print "</ul>";
+	print "<a href='" . $this->url(array('controller'=>'admin','action' => 'viewconfig')) . "?set=" . $name . "'>edit</a>";
+	print "&nbsp;";
+	print "<a href='#' onclick=\"confirmRedirect('" . $this->url(array('controller'=>'admin','action' => 'configdelete')) . "?set=" . $name . "','Really delete Set ".$name."?')\">delete</a>&nbsp;";
+
+        
+	print "</li>";
+}
+?>
+</ul>
+

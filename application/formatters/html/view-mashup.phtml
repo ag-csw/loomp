@@ -1,0 +1,22 @@
+<? // $m has to contain a mashup instance! ?>
+<div class="mashup">
+	<a name="<?= $this->m->getUri() ?>"></a>
+	<h2><a href="?mashup=<?= $this->m->getUri() ?>"><?= $this->m->getTitle() ?></a></h2>
+	<div id="fragments">
+	<? foreach ($this->m->getFragments() as $f) { print $this->assign('f',$f)->render('view-fragment.phtml'); } ?>
+	</div>
+	<div id="info_column" class="meta">
+			<div id="facet_container"></div>
+			<div id="mashup_metadata">
+				<h3>Mashup Metadata</h3>
+				<div class="uri"><?= $this->m->getUri() ?></div>
+				<div class="linkedData"><a href="<?= IndexController::getDataUri($this->m->getUri()) ?>">linked Data</a></div>
+				<div class="rssLink"><a href="<?= TPL_BASE_PATH ?>&amp;mashup=<?= $this->m->getUri() ?>&amp;fmt=rss">RSS</a></div>
+				<div class="pdfLink"><a href="<?= TPL_BASE_PATH ?>&amp;mashup=<?= $this->m->getUri() ?>&amp;fmt=pdf">PDF</a></div>
+				<div class="creatorName"><?= $this->fullname($this->m->getCreatorId()) ?></div>
+				<!--<div class="creatorUri"><?= $this->m->getCreatorId() ?></div>-->
+				<div class="createDate"><?= $this->m->getCreateDate() ?></div>
+				<div class="modifyDate"><?= $this->m->getModifyDate() ?></div>
+			</div>
+	</div>
+</div>

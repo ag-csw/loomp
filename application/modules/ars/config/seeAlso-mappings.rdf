@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!--
+    Mapping that defines, which properties has to be used for the "owl:sameAs" statements.
+-->
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+  <rdfs:Property rdf:about="http://www.w3.org/2002/07/owl#seeAlso">
+  	<!-- OpenCalais types -->
+    <!-- OpenCalais entity types -->
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Anniversary#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/City#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Company#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Continent#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Country#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Currency#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/EmailAddress#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/EntertainmentAwardEvent#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Facility#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/FaxNumber#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Holiday#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/IndustryTerm#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/MarketIndex#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/MedicalCondition#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/MedicalTreatment#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Movie#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/MusicAlbum#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/MusicGroup#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/NaturalFeature#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/OperatingSystem#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Organization#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Person#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/PhoneNumber#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Position#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Product#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/ProgrammingLanguage#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/ProvinceOrState#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/PublishedMedium#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/RadioProgram#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/RadioStation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Region#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/SportsEvent#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/SportsGame#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/SportsLeague#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Technology#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/TVShow#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/TVStation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/URL#about"/>
+
+    <!-- OpenCalais relation types -->
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Acquisition#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Alliance#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/AnalystEarningsEstimate#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/AnalystRecommendation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Arrest#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Bankruptcy#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/BonusSharesIssuance#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/BusinessRelation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Buybacks#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyAffiliates#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyCompetitor#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyCustomer#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyEarningsAnnouncement#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyEarningsGuidance#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyEmployeesNumber#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyExpansion#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyFounded#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyInvestment#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyLegalIssues#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyLocation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyMeeting#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyNameChange#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyProduct#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyReorganization#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyTechnology#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyTicker#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ConferenceCall#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Conviction#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CreditRating#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EmploymentChange#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EmploymentRelation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EnvironmentalIssue#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Extinction#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/FamilyRelation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/FDAPhase#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Indictment#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/IPO#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/JointVenture#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ManMadeDisaster#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Merger#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/MovieRelease#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/MusicAlbumRelease#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/NaturalDisaster#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PatentFiling#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PatentIssuance#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonAttributes#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCareer#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCommunication#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonEducation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonEmailAddress#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonRelation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ProductRecall#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ProductRelease#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Quotation#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/SecondaryIssuance#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/StockSplit#about"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Trial#about"/>
+
+  	<!-- Zemanta types -->
+  	<owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/zemanta/type.ecore/LinkTarget#url"/>
+  </rdfs:Property>
+
+</rdf:RDF>

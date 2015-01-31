@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function initTable() {
+				for(i=0; i<20; i++) {
+					add("Item Popeitem " + i);
+				}
+				complete();
+			}
+		</script>
+
+		<script type="text/javascript" src="js/Fluent.js"></script>
+	</head>
+	<body onload="initTable();">
+		<table border="0" style="position:relative; z-index:2;background:lightgrey; margin:0px; padding:0px"><tr><td  style="padding:0px;" rowspan="3">
+			<table id="theTable" border="0" style="background:lightgrey; margin:0px; padding:0px; border: 1px solid grey">
+		</table>
+		</td>
+		<td style="padding:0px;">
+			<button type="button" style="border:1px solid grey; padding:2px 1px; " onclick="scrollUp();"><img src="img/arrow_up.png"/></button>
+		</td>
+		<tr><td style="padding:0px;">
+		<button type="button" style="border:1px solid grey; padding:2px 1px" onclick="scrollDown();"><img src="img/arrow_down.png"/></button>
+		</td></tr>
+		<tr><td style="padding:0px;">
+		<button type="button" style="border:1px solid grey; padding:2px 1px" onclick="showOrHideTable();"><img src="img/expand.png"/></button>
+		</td>
+		</tr></table>
+		<textarea name="user_eingabe" cols="50" rows="10">Käsebrot ist ein gutes Brot ...</textarea>
+
+	</body>
+</html>

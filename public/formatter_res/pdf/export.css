@@ -1,0 +1,31 @@
+body {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12pt;
+  color: #000;
+  padding: 0px;
+  margin: 0px;
+}
+
+.mashup {
+}
+
+.fragment {
+}
+
+.meta span {
+	display: block;
+	font-size: 8pt;
+	color: #999;
+}
+
+.meta{
+	display: none;
+}
+
+#header, #footer{
+	display: none;
+}
+
+h1, h2{
+  color: #3f485f;	
+}

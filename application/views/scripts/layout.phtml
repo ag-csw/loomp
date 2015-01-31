@@ -1,0 +1,178 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title>loomp beta</title>
+   
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/editor.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_skeleton.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_nav.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_form.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_font.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_content.css'); ?>" media="screen" type="text/css" />
+  
+  <!-- tinyMCE dev loader - use if you change sth there 
+  reference: http://wiki.moxiecode.com/index.php/TinyMCE:Create_plugin/3.x#Compiling_JavaScript_.28editor_plugin_src.js_-.3E_editor_plugin.js.29
+  <script type="text/javascript" src="<?= $this->baseUrl('/lib/tiny_mce/tiny_mce_dev.js'); ?>"></script> -->
+  
+    <script type="text/javascript" src="<?= $this->baseUrl('/lib/tiny_mce/tiny_mce.js'); ?>"></script>
+    
+    
+  <script type="text/javascript" src="<?= $this->baseUrl('/lib/scriptaculous/prototype.js'); ?>"></script>
+  <script type="text/javascript" src="<?= $this->baseUrl('/lib/scriptaculous/scriptaculous.js'); ?>"></script>
+  <script type="text/javascript" src="<?= $this->baseUrl('/lib/loomp.js'); ?>"></script>
+  
+	<script type="text/javascript">
+   		if (typeof editorSettings != 'undefined' && editorSettings != null) editorSettings.content_css = '<?= $this->baseUrl('/layout/editor.css'); ?>';
+   </script>
+   
+</head> 
+<body>
+
+	<!-- HEADER ON -->
+	<div id=head>
+	<div id="headPage">
+	
+		<!-- link:home -->
+		<a href="<?= $this->url(array('controller'=>'index','action' => 'index')) ?>">
+			<div class="logo"></div>
+		</a>
+		
+		<div class="search" id="searchForm">
+			<form action="<?= $this->url(array('controller'=>'index','action' => 'search')) ?>">
+				
+				<div style="padding:1px; margin:0px;  float:left; border: 1px solid #fff">
+					<input type="text" name="query" value="<?= $this->query ?>" />
+				</div>
+				<input type="submit" class="button" name="s" value="<?=$this->translate("Search")?>" />
+			</form>
+		</div>
+		
+	</div>
+	</div>
+	<!-- HEADER OFF -->
+	
+	<!-- LOGIN ON -->
+	<div id=headAll>
+	<div id="headPrivate" >
+	
+		<!-- login info ON -->
+		<div id="navL">
+			<ul>
+			
+			
+			<? if ($this->loginStatus) { ?>
+	        <!-- logged in -->
+	        <li>
+	        	<p>
+		        <? printf($this->translate('logged in as %1$s'),"<b>".$this->user->getFullName()."</b>") ?>&nbsp;
+		        
+		        <!-- logout -->
+		        (<a href="<?= $this->url(array('controller'=>'login','action' => 'logout')) ?>"><?=$this->translate("logout")?></a>)
+		        </p>
+	        </li>
+	        
+	        <? } else { ?>
+	        <li>
+	        	<p>
+			        <!-- register -->
+			        <!-- <a href="<?= $this->url(array('controller'=>'login')) ?>"><?=$this->translate('login')?></a> -->
+			        <a href="<?= $this->url(array('controller'=>'login','action' => 'register')) ?>"><?=$this->translate('register')?></a>
+			    </p>
+		    </li>
+	        <? } ;?>
+         
+         	</ul>	
+		</div>
+		<!-- login info OFF -->
+		
+		<!-- menu info ON -->
+		<div id="navH">
+			<ul>
+			
+		        <li class="<? if ($this->isActive("home")) echo "active"; ?>">
+		        	<a href="<?= $this->url(array('controller'=>'home','action' => 'index')) ?>"><?=$this->translate('home')?></a>
+			    </li>
+
+				<? if ($this->loginStatus) { ?>
+		        <!-- logged in -->
+	   	        <li class="<? if ($this->isActive("mashup")) echo "active"; ?>">
+	   	    	<?php 
+					print "<a  href='" . $this->url(
+						array('controller'=>'mashup','action' => 'index'), 
+    					'default', 
+     					true) . "?open=new'>".$this->translate('open editor')."</a>";
+            		?>
+		     	</li>
+		        
+			    
+			    <li class="<? if ($this->isActive("home", "account")) echo "active"; ?>">
+		        	<a href="<?= $this->url(array('controller'=>'home','action' => 'account')) ?>"><?=$this->translate('my account')?></a>
+			    </li>
+			    
+		    	<? if ($this->user->isAdmin()) { ?>
+		        	<!-- is admin -->
+		        	<li class="<? if ($this->isActive("admin")) echo "active"; ?>">
+		         		<a href="<?= $this->url(array('controller'=>'admin','action' => 'index')) ?>"><?=$this->translate('admin')?></a>
+		         	</li>
+		     	<?}?>
+			    <? } ;?>
+			   
+			</ul>
+			 <br style="clear:both;"/>
+			
+		</div>
+		<!-- menu info OFF -->
+	</div>
+	</div>
+	
+	<div id="page">
+			
+		<div class="wrapper">
+		
+		<p class="info" style="margin-bottom:0px;">One Information Space, Many Information Networks 
+		<img style="top:3px; position:relative;" src="<?= $this->baseUrl('/layout/picture/logoS.gif'); ?>" /></p> 
+		<div class="line"></div>
+		<br />
+		
+		<!-- 
+		<div class="box280">box280</div>
+		<div class="content660">content660</div>
+		<br style="clear:both;"/>
+	
+		<div class="box200">box200</div>
+		<div class="content740">content740</div>
+		<br style="clear:both;"/>
+		 -->
+		<?
+		if (isset($this->messages)) {
+			foreach ($this->messages as $m) {
+				print '<div class="message">' . $m . '</div>';	
+			}
+		}
+		?>
+		<?= $this->layout()->content ?>
+		</div>
+	</div>
+	
+	
+	<br style="clear:both;" />
+
+	<div id="footerAll">
+		<div class="footer" >
+					
+			<div class="footerL">
+				<p class="small" >
+					<a href="<?= $this->url(array('controller'=>'index','action' => 'search')) ?>"><?=$this->translate('archive')?></a>
+			        <a href="<?= $this->url(array('controller'=>'index','action' => 'about')) ?>"><?=$this->translate('about')?></a>
+			        <a href="<?= $this->url(array('controller'=>'index','action' => 'feedback')) ?>"><?=$this->translate('feedback')?></a>
+			        <a href="http://www.fu-berlin.de/redaktion/impressum/index.html" target="_new"><?=$this->translate('imprint')?></a>    
+				</p>
+			</div>
+		<div class="footerR" />
+					
+	</div>
+	
+	
+</body>
+</html>

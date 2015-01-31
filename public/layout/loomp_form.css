@@ -1,0 +1,62 @@
+	.search form {margin-top:30px; float:right;}
+	.search form input {width:200px; padding: 2px; height: 18px; margin:0px;}
+	.search form input.button {
+		width:80px; margin:0px 15px 0px 10px ; padding: 0px 0px 2px 0px; background: #fff; border:1px solid #000;;
+		height: 31px; text-align:center; text-transform:uppercase; font-weight:bold;
+		background: url("picture/button_gray.gif") repeat-x bottom;
+		color: #fff;
+	}
+	
+	.search form input.button:hover {
+		background-image: url("picture/button_white.gif");
+		color: #353535;
+	}
+	
+	button, input.button {
+		background: url("picture/button_green.gif") repeat-x bottom;
+		height: 24px; border:none; color: #fff; font-weight:bold; padding: 0px 5px 3px 5px;
+		margin-right: 5px; margin-top:10px;
+		border: 1px solid #5F9600;
+	}
+	
+	input {height: 18px;}
+	
+	button.rand {margin-left: 20px;}
+	button.white {
+		background: url("picture/button_white.gif") repeat-x bottom;
+		border: 1px solid #353535;
+		color: #353535;
+	}
+	
+	button.gray {
+		background: url("picture/button_gray.gif") repeat-x bottom;
+		border: 1px solid #353535;
+		color: #fff;
+	}
+	
+	
+	button:hover, input.button:hover {
+		background-image: url("picture/button_white.gif");
+		color: #353535;
+	}
+	
+	.zend_form dd {margin:0px; }
+	.zend_form dt {margin-top:5px; }
+	.zend_form dd {height:100%; }
+	.zend_form dl {margin:0px;}
+	.zend_form input {width:200px; }
+	.zend_form label {font-size: 0.8em; }
+	.zend_form label.required {color: #B40000; }
+	.zend_form input.button {width:auto; padding:0px 10px 2px 10px; height:24px }
+	
+	.zend_form input.hidden {height:1px}
+	
+textarea {
+	width: 100%;
+	height: 200px;
+}
+	
+	
+	
+
+	

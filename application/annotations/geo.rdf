@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:loomp="http://www.loomp.org/loomp/0.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:geoonto="http://www.loomp.org/ontology/geography#"
+    xmlns:geo="http://www.loomp.org/annotations/geo/0.1/"
+  xml:base="http://www.loomp.org/annotations/geo/0.1/">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.loomp.org/loomp/0.1/"/>
+    <owl:imports rdf:resource="http://www.loomp.org/ontology/geography"/>
+  </owl:Ontology>
+  <loomp:AnnotationSet rdf:about="http://www.loomp.org/annotations/geo/0.1/geography">
+    <rdf:li>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/countryName">
+        <loomp:refersTo rdf:resource="http://www.loomp.org/ontology/geography#countryName"/>
+        <loomp:annotationDomain rdf:resource="http://www.loomp.org/ontology/geography#Country"/>
+        <loomp:annotationType>annotationProperty</loomp:annotationType>
+        <rdfs:label xml:lang="en">country</rdfs:label>
+        <rdfs:label xml:lang="de">Land</rdfs:label>
+      </loomp:Annotation>
+    </rdf:li>
+    <rdf:li>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/provinceName">
+        <loomp:refersTo rdf:resource="http://www.loomp.org/ontology/geography#provinceName"/>
+        <loomp:annotationType>annotationProperty</loomp:annotationType>
+        <rdfs:label xml:lang="en">province, state</rdfs:label>
+        <rdfs:label xml:lang="de">Provinz, Bundesland</rdfs:label>
+      </loomp:Annotation>
+    </rdf:li>
+    <rdf:li>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/location">
+        <rdfs:label xml:lang="en">location</rdfs:label>
+        <loomp:refersTo rdf:resource="http://www.loomp.org/ontology/geography#isLocated"/>
+        <loomp:annotationType>annotationProperty</loomp:annotationType>
+        <rdfs:label xml:lang="de">Ort</rdfs:label>
+      </loomp:Annotation>
+    </rdf:li>
+    <rdf:li>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/cityName">
+        <rdfs:label xml:lang="de">Stadt</rdfs:label>
+        <rdfs:label xml:lang="en">city</rdfs:label>
+        <loomp:refersTo rdf:resource="http://www.loomp.org/ontology/geography#cityName"/>
+        <loomp:annotationDomain rdf:resource="http://www.loomp.org/ontology/geography#City"/>
+        <loomp:annotationType>annotationProperty</loomp:annotationType>
+      </loomp:Annotation>
+    </rdf:li>
+    <rdf:li>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/villageName">
+        <rdfs:label xml:lang="en">village, cottage</rdfs:label>
+        <rdfs:label xml:lang="de">Dorf, Gemeinde</rdfs:label>
+        <loomp:refersTo rdf:resource="http://www.loomp.org/ontology/geography#villageName"/>
+        <loomp:annotationDomain rdf:resource="http://www.loomp.org/ontology/geography#Village"/>
+        <loomp:annotationType>annotationProperty</loomp:annotationType>
+      </loomp:Annotation>
+    </rdf:li>
+    <rdf:li>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/waterName">
+        <rdfs:label xml:lang="de">Gewässer</rdfs:label>
+        <loomp:refersTo rdf:resource="http://www.loomp.org/ontology/geography#waterName"/>
+        <loomp:annotationType>annotationProperty</loomp:annotationType>
+        <rdfs:label xml:lang="en">water</rdfs:label>
+      </loomp:Annotation>
+    </rdf:li>
+    <rdf:li>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/ocean">
+        <rdfs:label xml:lang="de">Ozean</rdfs:label>
+        <rdfs:label xml:lang="en">ocean</rdfs:label>
+        <loomp:refersTo rdf:resource="http://www.loomp.org/ontology/geography#oceanName"/>
+        <loomp:annotationDomain rdf:resource="http://www.loomp.org/ontology/geography#Ocean"/>
+        <loomp:annotationType>annotationProperty</loomp:annotationType>
+      </loomp:Annotation>
+    </rdf:li>
+    <rdf:li>
+      <loomp:Annotation rdf:about="http://www.loomp.org/annotations/geo/0.1/river">
+        <rdfs:label xml:lang="de">Fluss</rdfs:label>
+        <loomp:refersTo rdf:resource="http://www.loomp.org/ontology/geography#riverName"/>
+        <loomp:annotationDomain rdf:resource="http://www.loomp.org/ontology/geography#River"/>
+        <loomp:annotationType>annotationProperty</loomp:annotationType>
+        <rdfs:label xml:lang="en">river</rdfs:label>
+      </loomp:Annotation>
+    </rdf:li>
+    <rdfs:label xml:lang="en">Geography</rdfs:label>
+    <rdfs:label xml:lang="de">Geographie</rdfs:label>
+  </loomp:AnnotationSet>
+</rdf:RDF>

@@ -1,0 +1,14 @@
+<? // $f has to contain a mashup instance! ?>
+		<div class="fragment">
+			<a name="<?= $this->f->getUri() ?>"></a>
+			<h3><?= $this->f->getTitle() ?></h3>
+			<p><?= $this->f->getContent() ?></p>
+			<div class="meta">
+				<div class="uri"><?= $this->f->getUri() ?></div>
+				<div class="linkedData"><a href="<?= IndexController::getDataUri($this->f->getUri()) ?>">linked Data</a></div>
+				<div class="creatorName"><?= $this->fullname($this->f->getCreatorId()) ?></div>
+				<div class="creatorUri"><?= $this->f->getCreatorId() ?></div>
+				<div class="createDate"><?= $this->f->getCreateDate() ?></div>
+				<div class="modifyDate"><?= $this->f->getModifyDate() ?></div>
+			</div>
+		</div>

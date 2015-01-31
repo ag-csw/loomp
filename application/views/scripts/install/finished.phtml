@@ -1,0 +1,13 @@
+<? // install/finished.phtml ?>
+
+<div class="content660">
+	<h1>Update finished</h1>
+	
+	<?
+		if (!isset($this->loggedIn) || $this->loggedIn != true) {
+			print "<p>You need to login before you can continue.</p>";
+		} else { ?>
+	<p>Your database has been updated to version $this->dbVersion.</p>
+	<p>You can login using admin@loomp.org and the default password 'rdfa' (if not changed)</p>
+	<? }?>
+</div>

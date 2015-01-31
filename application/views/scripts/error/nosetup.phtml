@@ -1,0 +1,7 @@
+<? // application/views/scripts/error/nosetup.phtml ?>
+
+<h1><?=$this->translate('The system has not been set up')?></h1> 
+
+<p><?=$this->translate('System has not been set up. Please, proceed to the install site.')?><br />
+<a href="<?= $this->url(array('controller'=>'install','action' => 'index')) ?>"><?=$this->translate('Start Installer')?></a>
+</p>

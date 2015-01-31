@@ -1,0 +1,26 @@
+<h1><?=$this->translate("Welcome Home!")?></h1>
+
+<div class="box280">
+	<h3><?=$this->translate("Create a new mashup")?></h3>
+	
+	<?php 
+		print "<a href='" . $this->url(
+	array('controller'=>'mashup','action' => 'index')) ."?mashup=new'>".$this->translate("Open editor")."</a>";
+            
+	?>
+	
+	<div class="line"></div>
+	
+	<div style="margin: 10px; padding: 5px; border: 3px solid #FFA07A;">
+	<?=$this->translate('Please be aware that loomp is currently under development. All content may be deleted without notification!')?>
+	</div>
+	
+</div>
+			
+<div class="content660">
+			
+	<h2><?=$this->translate("My mashups")?></h2>
+	<? foreach ($this->mashups as $m) { print $this->assign('m',$m)->render('mashup-teaser.phtml'); } ?>
+	
+	
+</div>

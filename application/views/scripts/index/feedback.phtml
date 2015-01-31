@@ -1,0 +1,5 @@
+<h1><?=$this->translate('Feedback')?></h1>
+<? if ($this->feedbackSent) { ?><div class="message"><?=$this->translate('Thank you for your feedback.')?></div><?} else { ?>
+<?= $this->form ?>
+<? } ?>
+

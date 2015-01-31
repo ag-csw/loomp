@@ -1,0 +1,145 @@
+#mashup-list .chunk-preview {
+	display: none;
+}
+
+.chunk-item-enabled .sparql-edit, .chunk-item .sparql-preview {
+	display:block;
+}
+
+.chunk-item-enabled .sparql-preview, .chunk-item .sparql-edit {
+	display:none;
+}
+
+#chunks-list .chunk-full, #chunks-list .chunk-new {
+	display: none;
+}
+
+.shadow {
+	filter:alpha(opacity=60);
+  	opacity: 0.6;
+  	-moz-opacity:0.6;
+}
+
+.handle, .handle-hidden {
+	cursor: move;
+	background-color: #999;
+	color: #999;
+	margin: 2px 0px 2px 0px;
+	height: 8px;
+	overflow: none;
+	margin-bottom: 10px;
+}
+
+.handle-hidden {
+	background-color: #e9e9e9;
+	cursor: default;
+}
+
+button .hidden {
+	display: none;
+}
+
+/*
+body {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10pt;
+  color: #3f485f;
+}
+
+#mashup {
+	margin-right: 20em;
+	width: auto;
+}
+
+#chunks {
+	float: right;
+	width: 20em;
+	padding: 5px;
+	background-color: #e9e9e9;
+}
+
+#mashup-buttons, #mashup-saved {
+	margin: 15px;
+	padding: 5px;
+	background-color: #FFF58F;
+}
+
+
+#mashup-list {
+	padding: 0px;
+	margin: 5px;
+}
+
+#mashup-list .chunk-item, chunk-item-enabled {
+	margin: 10px;
+	padding: 5px;
+	background-color: #e9e9e9;
+}
+
+#chunks-list {
+	font-size: 9pt;
+	padding: 0px;
+}
+
+#chunks-list li {
+	margin: 5px;
+}
+
+.chunk-preview-title {
+	font-weight: bold;
+}
+*/
+
+#chunks-list .chunk-preview {
+	display: block;
+	border: 1px solid #999;
+}
+.not_activated {
+	background-color: #8FFFB3;
+}
+
+span, span p {
+	background-color: #FF8F8F;
+}
+
+
+
+ul.conf-sets {
+	margin-left: 10px;
+}
+
+ul.conf-sets li {
+	font-weight: bold;
+}
+
+ul.conf-formatters {
+	margin-left: 20px;
+}
+
+ul.conf-formatters li {
+	font-weight: normal;
+}
+
+ul.conf-values {
+	margin-left: 40px;
+}
+
+ul.conf-values li {
+	font-size: 10pt;
+	font-weight: normal;
+	
+}
+
+.l_mashup {
+	font-weight: bold;
+}
+
+.l_muri {
+	font-size: 10pt;
+	white-space: nowrap;
+}
+
+
+
+
+

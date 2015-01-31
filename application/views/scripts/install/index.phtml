@@ -1,0 +1,15 @@
+<? // install/index.phtml ?>
+
+<div class="content660">
+	<? if ($this->hasInstallPassword) { ?>
+		<h1>Login to install tool</h1>
+		
+		<p>Please enter the install tool password. The install tool
+		password is not the same as the loomp backend password.</p>
+	<? } else { ?>
+		<h1>Set Password for Install tool</h1>
+		
+		<p>Please enter an install tool password to protect your server.</p>
+	<? } ?>
+	<?= $this->form ?>
+</div>

@@ -1,0 +1,45 @@
+<h1><? printf($this->translate('Hello %1$s'),$this->user->getFullName()) ?></h1>
+
+<div class="box280">
+	
+	<h2><?=$this->translate('Account Settings')?></h2>
+
+	<?= $this->accountupdateform; ?>
+</div>
+			
+<div class="content660">
+	
+
+	<? if (sizeof($this->mashups) > 0) { ?>
+	<h2><?=$this->translate('External access')?></h2>
+	<?=$this->translate('Enable external Applications for access to specific mashups here. You may have to create a mashup first.')?>
+	<br />
+	<form action="<?= $this->url(array('controller'=>'home','action' => 'externalcreate')) ?>" method="POST">
+		<?=$this->translate('Mashup:')?> <select name="mashup"><option />
+			<? foreach ($this->mashups as $m) { print '<option value="'.$m->getUri().'">'.$m->getTitle().' ('.$m->getUri().')</option>'; } ?>
+		</select>
+		<button><?=$this->translate('enable access')?></button>
+	</form>
+	
+	<br /><br />
+	<table id="access">
+
+<? 	
+	if (sizeof($this->access) > 0) print "<tr><th colspan=1>".$this->translate('Mashup')."</th><th>".$this->translate('Key')."</th><th>".$this->translate("Revoke?")."</th></tr>";
+ 	foreach ($this->access as $access) {
+ 		$m = $access->getMashupInstance();
+ 		print "<tr>";
+ 		print "<td class='l_mashup'><a href='".$this->url(array('controller'=>'mashup','action' => 'index')) . "?open=" . $m->getUri() ."'>" . $this->truncate($m->getTitle(),0,25) . "</a></td>";
+ 		print "<td class='l_key'><input onclick='this.select()' type='text' readonly='readonly' value='".$access->getAccesskey()."' size='36' /></td>"; 		
+ 	
+        print "<td class='l_actions'>";
+        print "<a href='#' onclick=\"confirmRedirect('" . $this->url(array('controller'=>'home','action' => 'externaldelete')) . "?mashup=" . $m->getUri() . "','".sprintf($this->translate('Really revoke access to %1$s?'),$m->getTitle())."')\">".$this->translate('revoke')."</a>&nbsp;";
+               
+        print "</td>";
+        print "</tr>";
+ 		
+ 	}
+?>
+</table>
+<? } ?>
+</div>

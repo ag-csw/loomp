@@ -1,0 +1,22 @@
+AddDefaultCharset utf-8
+php_value magic_quotes_gpc 0
+
+RewriteEngine On
+RewriteBase /
+
+# no rewriting if a static resource exists
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+
+# rewriting for rap-pubby
+RewriteCond %{REQUEST_URI} ^.*/(mashup|fragment|resource|user)/([0-9a-f]{32})$ [NC]
+RewriteRule ^.*$ data/page/%0/%1 [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} ^.*/data.*$ [NC]
+RewriteRule ^.*$ data/ [NC,L]
+
+# rewriting for zend
+RewriteRule ^.*$ index.php [NC,L]
+

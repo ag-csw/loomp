@@ -1,0 +1,122 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title><? if ($this->singleMashup) print $this->mashupData->getTitle(); else print "Mashups";?></title>
+  
+  <link rel="stylesheet" href="<?= TPL_RES_PATH ?><?= CSS ?>" media="screen" type="text/css" />
+  
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_skeleton.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_nav.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_form.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_font.css'); ?>" media="screen" type="text/css" />
+	<link rel="stylesheet" href="<?= $this->baseUrl('/layout/loomp_content.css'); ?>" media="screen" type="text/css" />
+  
+  <script type="text/javascript" src="<?= TPL_RES_PATH ?>facet.js"></script>
+  
+  <script type="text/javascript" src="<?= $this->baseUrl('/lib/scriptaculous/prototype.js'); ?>"></script>
+  <script type="text/javascript" src="<?= $this->baseUrl('/lib/scriptaculous/scriptaculous.js?load=effects,dragdrop'); ?>"></script>
+  
+  <link rel="stylesheet" href="<?= TPL_RES_PATH ?>cn.css" media="screen" type="text/css" />
+  <script type="text/javascript" src="<?= $this->baseUrl('/lib/protomenu/Proto.Menu.js'); ?>"></script>
+  <script type="text/javascript" src="<?= $this->baseUrl('/lib/lightbox/lightbox.js'); ?>"></script>
+  <script type="text/javascript" src="<?= TPL_RES_PATH ?>cn.js"></script>
+  
+</head> 
+<body onload="initFacet('facet'); initCN()">
+
+	<!-- HEADER ON -->
+	<div id=head>
+	<div id="headPage">
+	
+		<!-- link:home -->
+		<a href="../../">
+
+			<div class="logo"></div>
+		</a>
+		
+	</div>
+	</div>
+
+	<!-- HEADER OFF -->
+	
+	<!-- LOGIN ON -->
+	<div id=headAll>
+	<div id="headPrivate" >
+
+		
+		<!-- menu info ON -->
+		<div id="navH">
+			<ul>
+		        
+		        <li>
+
+		        	<a href="../home">home</a>
+			    </li>
+		     				    			   
+			</ul>
+			 <br style="clear:both;"/>
+
+			
+		</div>
+		<!-- menu info OFF -->
+	</div>
+	</div>
+	
+	<div id="page">
+			
+		<div class="wrapper">
+
+			<div id="content">
+				<? if (!$this->singleMashup) { ?>
+					<div id="mashupList">
+					<? foreach ($this->mashupData as $m) { print $this->assign('m',$m)->render('view-mashup.phtml'); } ?>
+					</div>
+				<? } else { ?>
+					<? print $this->assign('m',$this->mashupData)->render('view-mashup.phtml'); ?>
+				<? } ?>
+			</div>
+
+		</div>
+
+	</div>	
+	
+	<br style="clear:both;" />
+
+	<div id="footerAll">
+		<div class="footer" >
+					
+			<div class="footerL">
+				<p class="small" >
+			        <a href="../../index/about">About</a>
+			        <a href="../../index/feedback">Feedback</a>
+			        <a href="http://www.fu-berlin.de/redaktion/impressum/index.html" target="_new">Impressum</a>    
+				</p>
+
+			</div>
+		<div class="footerR" />
+					
+	</div>	
+	
+</body>
+</html>
+
+<div id="ConceptNavigation">
+			<p id="conList">
+				<img src="<?= $this->baseUrl('/layout/picture/ajax-loader-clock.gif'); ?>" alt"loading" />
+				</p>
+				<p style="padding: 3px; margin: 0; "><a id="closeLink" href="javascript:lb_cn.close();">Click here</a> to close the lightbox.
+			</p>
+		</div>
+<div id="DataNavigation">
+			<p id="actRes">
+				Here we load the pubby page of a resource remotely. We start with a hardcoded example until Radek finishes the API extension.
+				
+			</p>
+			<p><a id="closeLink" href="javascript:lb_dn.close();">Close</a></p>
+			
+		</div>
+
+</body>
+</html>
+

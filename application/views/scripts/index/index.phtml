@@ -1,0 +1,27 @@
+<? // application/views/scripts/index/index.phtml ?>
+
+<div class="box280">
+	
+	<? if (!$this->loginStatus) { ?>
+		<h3><?=$this->translate('Login')?></h3>
+		<?= $this->loginForm ?>
+		<div class="line"></div>
+		<br />
+	<? } ?>
+<!--	
+	<h3><?=$this->translate('News')?></h3>
+	<p><?=$this->translate('The version 0.3 of loomp will be released soon.')?></p>
+	<p class="small"><? printf($this->translate('by %1$s'),"Ralf Heese")?></p>
+-->	
+</div>
+
+<div class="content660">
+
+	<h1><?=$this->translate('Welcome!')?></h1>
+	
+	<div id="lastMashups">
+	<? foreach ($this->lastMashups as $m) { print $this->assign('m',$m)->render('mashup-teaser.phtml'); } ?>
+	
+	</div>
+</div>
+

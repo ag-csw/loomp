@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--
+    Defines the mappings from the Web Service types to the loomp types.
+    (Each loomp type with the types, which have to be mapped to it.)
+-->
+<rdf:RDF
+    xmlns:loomp="http://www.loomp.org/loomp/0.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:imports rdf:resource="http://www.loomp.org/loomp/0.1/"/>
+  </owl:Ontology>
+
+  <!-- mappings for "pi.rdf" -->
+  <loomp:Annotation rdf:about="http://xmlns.com/foaf/0.1/name">
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/AnalystEarningsEstimate#sourcePerson_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/AnalystRecommendation#sourcePerson_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Arrest#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyLegalIssues#personPlaintiff_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Conviction#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EmploymentChange#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EmploymentRelation#employee_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EmploymentRelation#employer_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/FamilyRelation#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/FamilyRelation#relative_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Indictment#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/MusicAlbumRelease#performerPerson_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonAttributes#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCareer#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCommunication#person1_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCommunication#person2_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonEducation#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonEmailAddress#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonRelation#person1_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonRelation#person2_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Quotation#person_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Trial#person_name"/>
+
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Person#name"/>
+  </loomp:Annotation>
+  <loomp:Annotation rdf:about="http://xmlns.com/foaf/0.1/mbox">
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonEmailAddress#emailAddress"/>
+
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/EmailAddress#name"/>
+  </loomp:Annotation>
+  <loomp:Annotation rdf:about="http://xmlns.com/foaf/0.1/birthday">
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonAttributes#birthDate"/>
+  </loomp:Annotation>
+
+  <!-- mappings for "geo.rdf" -->
+  <loomp:Annotation rdf:about="http://www.loomp.org/ontology/geography#countryName">
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyEmployeesNumber#locationCountry_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyExpansion#locationCountry_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyLocation#country_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyMeeting#country_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EnvironmentalIssue#locationCountry_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Extinction#locationCountry_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ManMadeDisaster#locationCountry_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/NaturalDisaster#locationCountry_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCareer#country_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#destinationCountry_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#originCountry_name"/>
+
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/CountryDisambiguated#longName"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/CountryDisambiguated#name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/CountryDisambiguated#shortName"/>
+
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/Country#name"/>
+  </loomp:Annotation>
+  <loomp:Annotation rdf:about="http://www.loomp.org/ontology/geography#provinceName">
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyEmployeesNumber#locationProvinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyExpansion#locationProvinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyLocation#provinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyMeeting#provinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EnvironmentalIssue#locationProvinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Extinction#locationProvinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ManMadeDisaster#locationProvinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/NaturalDisaster#locationProvinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCareer#provinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#destinationProvinceOrState_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#originProvinceOrState_name"/>
+
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/ProvinceOrStateDisambiguated#longName"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/ProvinceOrStateDisambiguated#name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/ProvinceOrStateDisambiguated#shortName"/>
+
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/ProvinceOrState#name"/>
+  </loomp:Annotation>
+  <loomp:Annotation rdf:about="http://www.loomp.org/ontology/geography#cityName">
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyEmployeesNumber#locationCity_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyExpansion#locationCity_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyLocation#city_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyMeeting#city_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EnvironmentalIssue#locationCity_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Extinction#locationCity_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ManMadeDisaster#locationCity_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/NaturalDisaster#locationCity_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCareer#city_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#destinationCity_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#originCity_name"/>
+
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/CityDisambiguated#longName"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/CityDisambiguated#name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity/disambiguated.ecore/CityDisambiguated#shortName"/>
+
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/entity.ecore/City#name"/>
+  </loomp:Annotation>
+  <loomp:Annotation rdf:about="http://www.loomp.org/ontology/geography#isLocated">
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyEmployeesNumber#locationString"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyExpansion#locationString"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/CompanyMeeting#meetingSite_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/EnvironmentalIssue#locationString"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/Extinction#locationString"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ManMadeDisaster#locationString"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/ManMadeDisaster#facility_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/NaturalDisaster#locationString"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonCommunication#facility_name"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#destinationString"/>
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/calais/type/relation.ecore/PersonTravel#originString"/>
+  </loomp:Annotation>
+
+  <!-- rdfs:Resource mapping -->
+  <rdfs:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource">
+    <!-- Zemanta type -->
+    <owl:sameAs rdf:resource="http:///de/fuberlin/ars/uima/annotator/zemanta/type.ecore/LinkTarget"/>
+  </rdfs:Class>
+
+</rdf:RDF>

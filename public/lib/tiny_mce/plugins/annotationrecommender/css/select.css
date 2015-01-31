@@ -1,0 +1,12 @@
+#annotation-chooser-table th {
+	font-size: 14px;
+}
+
+#annotation-chooser-table th, #annotation-chooser-table td {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.annotated {
+	background-color: #FF8F8F;
+}
