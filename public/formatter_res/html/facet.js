@@ -16,7 +16,7 @@ var colors = new Array(
 
 function ge(ele) {
 	var hlEle = document.getElementById(ele);
-	if (hlEle == null) alert('missing element with id ' + ele);
+	//if (hlEle == null) console.log('missing element with id ' + ele);
 	return hlEle;
 }
 
@@ -129,7 +129,7 @@ function initFacet(facetName) {
 	}
 	
 	var selectEle = ge('facet-colors');
-	for (var i=0; i < colors.length; i++) {
+	for (var i=0; i < colors.length; i++) {	
 		var curCol = colors[i]
 		var newOpt = document.createElement('option');
 		newOpt.innerHTML = curCol;
@@ -137,5 +137,6 @@ function initFacet(facetName) {
 		newOpt.style.backgroundColor = curCol;
 		selectEle.appendChild(newOpt);
 	}
-	if (annotatedSpans.length == 0) ge(facetName).style.display = 'none';
+	var ff = ge(facetName);
+	if (annotatedSpans.length == 0 && ff) ff.style.display = 'none';
 }
