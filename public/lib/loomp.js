@@ -67,11 +67,12 @@ var editorSettings = {
 		theme : "advanced",
 		skin : "o2k7",
 		skin_variant : "silver",
-		plugins : "preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups,annotate,annotationrecommender,ressourceconnector",
+		plugins : "preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups,annotate",//,annotationrecommender,ressourceconnector",
 
 		// Theme options
 		theme_advanced_buttons1 : "annotate,switchVocabulary,|,code",
-		theme_advanced_buttons2 : "res_connect_button, ars_recommend",
+	//	theme_advanced_buttons2 : "res_connect_button, ars_recommend",
+		theme_advanced_buttons2 : "",
 		theme_advanced_buttons3 : "",
 //		theme_advanced_buttons4 : "",
 
