@@ -15,3 +15,5 @@ Working Group Coporate Semantic Web
 Koenigin-Luise-Strasse 24-26
 14195 Berlin
 http://www.mi.fu-berlin.de/en/inf/groups/ag-csw/
+
+Contact: adrian.paschke@gmx.de
