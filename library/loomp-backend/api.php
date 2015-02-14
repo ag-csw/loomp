@@ -298,7 +298,6 @@ class LoompApi {
 		$uri = $baseuri;
 		$i = 1;
 		do {
-			//print $uri;
 			$uri_res = new Resource($uri);
 			if (!$this->rdfModel->findFirstMatchingStatement($uri_res, NULL, NULL) &&
 				!$this->rdfModel->findFirstMatchingStatement(NULL, NULL, $uri_res) &&
@@ -523,10 +522,8 @@ class LoompApi {
 		$res = array();
 		
 		$containsPredicate = 'http://www.loomp.org/loomp/0.1/contains';
-	
 		//$it = $this->rdfModel->find(new Resource($fragmentURI), new Resource($containsPredicate), NULL)->getStatementIterator();
 		$it = $this->rdfModel->find(NULL, new Resource($containsPredicate), new Resource($annotURI))->getStatementIterator();
-
 		$fragment = $it->next();
 		$fragmentURI = $fragment->getSubject()->getUri();
 		
